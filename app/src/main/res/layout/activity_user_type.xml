@@ -6,18 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.signup.UserTypeActivity">
 
-    <Button
-        android:id="@+id/btn_user_farmer"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="farmer" />
-    <Button
-        android:id="@+id/btn_user_investor"
+        android:checkedButton="@+id/rb_farmer">
+
+        <RadioButton
+            android:id="@+id/rb_farmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Farmer" />
+
+        <RadioButton
+            android:id="@+id/rb_investor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Investor" />
+    </RadioGroup>
+    <CheckBox
+        android:id="@+id/cb_agree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_user_farmer"
+        android:layout_below="@+id/radioGroup"
+        android:text="Agree Terms and Conditions" />
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cb_agree"
         android:layout_centerHorizontal="true"
-        android:text="investor" />
+        android:text="Proceed" />
+
+
 </RelativeLayout>
