@@ -8,8 +8,19 @@ public class UserModel {
     private String gender;
     private String contactNumber;
     private String address;
+    private String imageUrl;
 
     public UserModel() {};
+
+    public UserModel(String firstName, String lastName, int age, String gender, String contactNumber, String address, String imageUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.contactNumber = contactNumber;
+        this.address = address;
+        this.imageUrl = imageUrl;
+    }
 
     public UserModel(String firstName, String lastName, int age, String gender, String contactNumber, String address) {
         this.firstName = firstName;
@@ -66,5 +77,13 @@ public class UserModel {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
