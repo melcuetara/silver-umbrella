@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "531354161868",
+    "project_id": "rentaland-62a53",
+    "storage_bucket": "rentaland-62a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531354161868:android:56c0bd784ef46682f76869",
+        "android_client_info": {
+          "package_name": "com.example.rentaland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531354161868-f06ul74umn30kekt51rejl9o34p30eoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBemZ2fPhGLsSikOh02MIH3oKEYbB9w03E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531354161868-f06ul74umn30kekt51rejl9o34p30eoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
