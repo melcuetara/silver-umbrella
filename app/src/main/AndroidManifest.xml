@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentaland">
         <activity
+            android:name=".ui.signup.SignUpInvestorActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.signup.UserTypeActivity"
             android:exported="false" />
         <activity

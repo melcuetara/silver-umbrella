@@ -86,7 +86,6 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                 String contactNumber = binding.etContactNumber.getText().toString().trim();
                 String address = binding.etAddress.getText().toString().trim();
                 user = new UserModel(firstName, lastName, age, gender, contactNumber, address);
-                uploadFile();
                 saveCredentials(user, mUser.getUid());
             }
         });
@@ -117,15 +116,26 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                                 reference.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Toast.makeText(SignUpCredentialsActivity.this, "Account Creation Success!", Toast.LENGTH_SHORT).show();
                                         if (userType.equals("user_farmer")) {
                                             startSignUpFarmer();
                                         }
                                         startSignUpInvestor();
                                     }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SignUpCredentialsActivity.this, "Database Input Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
                                 });
                             }
                         });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignUpCredentialsActivity.this, "Upload Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -138,7 +148,8 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
     }
 
     private void startSignUpInvestor() {
-        //  Intent intentInvestor = new Intent(SignUpActivity.this,)
+        //  Intent intentInvestor = new Intent(SignUpActivity.this, SignUpInvestorActivity.class)
+        //startActivity(intentInvestor);
     }
 
     private void openFileChooser() {
@@ -155,34 +166,6 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             binding.ivUserImage.setImageURI(imageUri);
-        }
-    }
-
-    private void uploadFile() {
-        if (imageUri != null) {
-            storageRef = storage.getReference("User Images").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-            storageRef.putFile(imageUri)
-                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            Toast.makeText(SignUpCredentialsActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
-                            storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    user.setImageUrl(uri.toString());
-                                }
-                            });
-                        }
-                    })
-
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(Exception e) {
-                            Toast.makeText(SignUpCredentialsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        } else {
-            Toast.makeText(SignUpCredentialsActivity.this, "No File Selected", Toast.LENGTH_SHORT).show();
         }
     }
 
