@@ -26,6 +26,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/amaranth"
                 android:text="Register As"
+                android:textAlignment="center"
                 android:textColor="@color/darkbrown"
                 android:textSize="20sp" />
 
@@ -67,7 +68,7 @@
                                 android:layout_width="90dp"
                                 android:layout_height="80dp"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/rb_farmer"
+                                app:layout_constraintStart_toEndOf="@+id/textView2"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/farmer" />
 
@@ -83,7 +84,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView3"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/rb_farmer" />
+                                app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </LinearLayout>
@@ -120,7 +121,7 @@
                                 android:layout_width="90dp"
                                 android:layout_height="80dp"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/rb_investor"
+                                app:layout_constraintStart_toEndOf="@+id/textView4"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:srcCompat="@drawable/investor" />
 
@@ -135,7 +136,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/imageView5"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/rb_investor" />
+                                app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </LinearLayout>
@@ -197,6 +198,8 @@
                                     android:id="@+id/textView5"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="10dp"
                                     android:fontFamily="@font/amaranth"
                                     android:hint="The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice, and any or all Agreements: &quot;Client, 'You' and 'Your' refers to you, the person accessing this application and accepting the Business terms and conditions. &quot;The Business&quot;, &quot;Ourselves&quot;, &quot;We&quot; and &quot;US&quot;, refer to our Company. &quot;Party, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the client and ourselves or either the Client or ourselves. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the client in the most appropriate manner, whether by formal meetings of a fixed duration or any other means, for the express purpose of meeting the client's needs in respect of the provision of the Company's stated services/products, in accordance with and subject to, prevailing English Law. Any use of the above terminology or other words in the singular plural, capitalization, and/or he/she or they are taken as interchangeable and therefore as referring to the same."
                                     android:textSize="14sp"
@@ -235,6 +238,7 @@
                                     android:id="@+id/textView8"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
                                     android:fontFamily="@font/amaranth"
                                     android:hint="Privacy Statement "
                                     android:textSize="16sp"
