@@ -24,7 +24,6 @@
                     android:id="@+id/btn_backss"
                     android:layout_width="60dp"
                     android:layout_height="48dp"
-                    android:layout_alignBottom="@+id/rv_create"
                     android:layout_alignParentTop="true"
                     android:background="#CCA586"
                     android:contentDescription="TODO"
@@ -42,7 +41,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/amaranth"
-                    android:text="Create Account"
+                    android:text="Register Farmland"
                     android:textColor="@color/WHITE"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -52,91 +51,166 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="350dp"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_farm_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/logoback" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:text="Select Photo"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkbrown"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/GRAY"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_farm_name_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_farm_image"
+                        android:hint="Farm Name"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_farm_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_crop_landscape_24"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="@color/darkbrown"
+                            android:fontFamily="@font/amaranth"
+                            android:inputType="text"
+                            android:textColor="@color/darkbrown"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_farm_address_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_farm_name_layout"
+                        android:hint="Farm Address"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_farm_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="@color/darkbrown"
+                            android:fontFamily="@font/amaranth"
+                            android:inputType="text"
+                            android:textColor="@color/darkbrown"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_farm_budget_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_farm_area_layout"
+                        android:hint="Farm Budget"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_farm_budget"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_credit_card_24"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="@color/darkbrown"
+                            android:fontFamily="@font/amaranth"
+                            android:inputType="text"
+                            android:textColor="@color/darkbrown"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_farm_area_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/et_farm_address_layout"
+                        android:hint="Farm Area"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_farm_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_baseline_photo_size_select_small_24"
+                            android:drawablePadding="5dp"
+                            android:drawableTint="@color/darkbrown"
+                            android:fontFamily="@font/amaranth"
+                            android:inputType="text"
+                            android:textColor="@color/darkbrown"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <Button
                 android:id="@+id/btn_create"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
                 android:layout_below="@+id/et_farm_budget_layout"
                 android:layout_centerHorizontal="true"
-                android:text="Create" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/darkbrown"
+                android:fontFamily="@font/amaranth"
+                android:text="Create"
+                android:textSize="12sp"
+                app:cornerRadius="10dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_farm_budget_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_farm_area_layout"
-                android:hint="Farm Budget"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_farm_budget"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_farm_area_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_farm_address_layout"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:hint="Farm Area"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_farm_area"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_farm_address_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_farm_name_layout"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:hint="Farm Address"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_farm_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_farm_name_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/iv_farm_image"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:hint="Farm Name"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_farm_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/iv_farm_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                app:srcCompat="@mipmap/ic_launcher" />
         </LinearLayout>
     </ScrollView>
 
