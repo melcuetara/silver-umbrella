@@ -10,11 +10,10 @@ public class FarmModel {
 
     public FarmModel() { };
 
-    public FarmModel(String farmAddress, double farmArea, String farmName, String farmImageUrl, double farmingBudget) {
+    public FarmModel(String farmAddress, double farmArea, String farmName, double farmingBudget) {
         this.farmAddress = farmAddress;
         this.farmArea = farmArea;
         this.farmName = farmName;
-        this.farmImageUrl = farmImageUrl;
         this.farmingBudget = farmingBudget;
     }
 

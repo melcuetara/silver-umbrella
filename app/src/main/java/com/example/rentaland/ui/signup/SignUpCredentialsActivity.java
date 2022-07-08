@@ -148,8 +148,8 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
     }
 
     private void startSignUpInvestor() {
-        //  Intent intentInvestor = new Intent(SignUpActivity.this, SignUpInvestorActivity.class)
-        //startActivity(intentInvestor);
+        Intent intentInvestor = new Intent(SignUpCredentialsActivity.this, SignUpInvestorActivity.class);
+        startActivity(intentInvestor);
     }
 
     private void openFileChooser() {
