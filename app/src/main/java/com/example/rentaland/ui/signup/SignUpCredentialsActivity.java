@@ -14,8 +14,10 @@ import android.widget.Toast;
 
 import com.example.rentaland.databinding.ActivitySignUpCredentialsBinding;
 import com.example.rentaland.model.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -70,8 +72,11 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                         hasEmptyField(binding.etAge, binding.etAgeLayout) ||
                         hasEmptyField(binding.etGender, binding.etGenderLayout) ||
                         hasEmptyField(binding.etContactNumber, binding.etContactNumberLayout) ||
-                        hasEmptyField(binding.etAddress, binding.etAddressLayout) ||
-                        imageUri == null) {
+                        hasEmptyField(binding.etAddress, binding.etAddressLayout)) {
+                    return;
+                }
+                if (imageUri == null) {
+                    Toast.makeText(SignUpCredentialsActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String firstName = binding.etFirstName.getText().toString().trim();
@@ -81,6 +86,7 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                 String contactNumber = binding.etContactNumber.getText().toString().trim();
                 String address = binding.etAddress.getText().toString().trim();
                 user = new UserModel(firstName, lastName, age, gender, contactNumber, address);
+                uploadFile();
                 saveCredentials(user, mUser.getUid());
             }
         });
@@ -97,19 +103,32 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
     }
 
     private void saveCredentials(UserModel user, String userId) {
-
+        storageRef = storage.getReference("User Images").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
         reference = database.getReference().child(userType).child(userId);
-        uploadFile();
-        reference.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(SignUpCredentialsActivity.this, "Account Creation Success!", Toast.LENGTH_SHORT).show();
-                if (userType.equals("user_farmer")) {
-                    startSignUpFarmer();
-                }
-                startSignUpInvestor();
-            }
-        });
+        storageRef.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(SignUpCredentialsActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
+                        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                user.setImageUrl(uri.toString());
+                                reference.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(SignUpCredentialsActivity.this, "Account Creation Success!", Toast.LENGTH_SHORT).show();
+                                        if (userType.equals("user_farmer")) {
+                                            startSignUpFarmer();
+                                        }
+                                        startSignUpInvestor();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+
 
     }
 
@@ -143,9 +162,9 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         if (imageUri != null) {
             storageRef = storage.getReference("User Images").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
             storageRef.putFile(imageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             Toast.makeText(SignUpCredentialsActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
                             storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
@@ -155,6 +174,7 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                             });
                         }
                     })
+
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(Exception e) {
