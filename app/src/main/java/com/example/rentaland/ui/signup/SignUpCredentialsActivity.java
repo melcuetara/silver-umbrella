@@ -7,12 +7,15 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.rentaland.MainActivity;
 import com.example.rentaland.databinding.ActivitySignUpCredentialsBinding;
+import com.example.rentaland.model.IdModel;
 import com.example.rentaland.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -29,19 +32,26 @@ import com.google.firebase.storage.UploadTask;
 
 public class SignUpCredentialsActivity extends AppCompatActivity {
 
-    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int PICK_IMAGE_REQUEST_PROFILE = 1;
+    private static final int PICK_IMAGE_REQUEST_ID = 2;
+    private final String TAG = "SIGN_UP_CREDENTIALS";
+
     private ActivitySignUpCredentialsBinding binding;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private DatabaseReference referenceId;
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private StorageReference storageRefId;
 
     private UserModel user;
+    private IdModel idModel;
     private Bundle bundle;
     private Uri imageUri;
+    private Uri idImageUrl;
     private String userType;
 
     @Override
@@ -60,7 +70,14 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         binding.ivUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFileChooser();
+                openFileChooser(PICK_IMAGE_REQUEST_PROFILE);
+            }
+        });
+
+        binding.ivId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser(PICK_IMAGE_REQUEST_ID);
             }
         });
 
@@ -72,10 +89,11 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                         hasEmptyField(binding.etAge, binding.etAgeLayout) ||
                         hasEmptyField(binding.etGender, binding.etGenderLayout) ||
                         hasEmptyField(binding.etContactNumber, binding.etContactNumberLayout) ||
-                        hasEmptyField(binding.etAddress, binding.etAddressLayout)) {
+                        hasEmptyField(binding.etAddress, binding.etAddressLayout) ||
+                        hasEmptyField(binding.etIdLabel, binding.etIdLabelLayout)) {
                     return;
                 }
-                if (imageUri == null) {
+                if (imageUri == null || idImageUrl == null) {
                     Toast.makeText(SignUpCredentialsActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -85,7 +103,10 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                 String gender = binding.etGender.getText().toString().trim();
                 String contactNumber = binding.etContactNumber.getText().toString().trim();
                 String address = binding.etAddress.getText().toString().trim();
+                String idType = binding.etIdLabel.getText().toString().trim();
                 user = new UserModel(firstName, lastName, age, gender, contactNumber, address);
+                idModel = new IdModel(idType);
+                saveId(idModel, mUser.getUid());
                 saveCredentials(user, mUser.getUid());
             }
         });
@@ -108,7 +129,7 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(SignUpCredentialsActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Upload Profile Image Success");
                         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -118,16 +139,17 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                                     public void onSuccess(Void unused) {
                                         if (userType.equals("user_farmer")) {
                                             startSignUpFarmer();
+                                            return;
                                         }
-                                        startSignUpInvestor();
+                                        startMain();
                                     }
                                 })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(SignUpCredentialsActivity.this, "Database Input Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(SignUpCredentialsActivity.this, "Database Input Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }
                         });
                     }
@@ -138,8 +160,37 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                         Toast.makeText(SignUpCredentialsActivity.this, "Upload Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
 
-
+    private void saveId(IdModel idModel, String userId) {
+        storageRefId = storage.getReference("ID Images").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+        referenceId = database.getReference().child("user_valid_id").child(userId);
+        storageRefId.putFile(idImageUrl)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Log.d(TAG, "Upload ID Image Success");
+                        storageRefId.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                idModel.setIdImageUrl(uri.toString());
+                                referenceId.setValue(idModel)
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(SignUpCredentialsActivity.this, "Database Input Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                            }
+                        });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignUpCredentialsActivity.this, "Upload Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void startSignUpFarmer() {
@@ -147,25 +198,28 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         startActivity(intentFarmer);
     }
 
-    private void startSignUpInvestor() {
-        Intent intentInvestor = new Intent(SignUpCredentialsActivity.this, SignUpInvestorActivity.class);
-        startActivity(intentInvestor);
+    private void startMain() {
+        Intent intentMain = new Intent(SignUpCredentialsActivity.this, MainActivity.class);
+        startActivity(intentMain);
     }
 
-    private void openFileChooser() {
+    private void openFileChooser(int requestCode) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, requestCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_IMAGE_REQUEST_PROFILE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             binding.ivUserImage.setImageURI(imageUri);
+        } else if (requestCode == PICK_IMAGE_REQUEST_ID && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            idImageUrl = data.getData();
+            binding.ivId.setImageURI(idImageUrl);
         }
     }
 
