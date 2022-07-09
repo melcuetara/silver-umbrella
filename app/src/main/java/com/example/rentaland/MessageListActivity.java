@@ -9,6 +9,6 @@ public class MessageListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_list2);
+        setContentView(R.layout.activity_message_list);
     }
 }
