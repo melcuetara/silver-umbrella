@@ -109,9 +109,33 @@
                         android:layout_height="55dp"
                         android:layout_below="@id/et_password_layout"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/darkbrown"
                         android:fontFamily="@font/amaranth"
                         android:text="Create Account"
+                        android:textSize="12sp"
+                        app:cornerRadius="10dp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/amaranth"
+                        android:text="Already have an account? Login now!"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_create_account2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_below="@id/btn_login"
+                        android:layout_centerHorizontal="true"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/darkbrown"
+                        android:fontFamily="@font/amaranth"
+                        android:text="Login Account"
                         android:textSize="12sp"
                         app:cornerRadius="10dp" />
                 </LinearLayout>
