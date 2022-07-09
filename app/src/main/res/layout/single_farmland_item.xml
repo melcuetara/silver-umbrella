@@ -72,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:text="Farmland"
                 android:textAlignment="center"
                 android:textSize="20sp" />
@@ -81,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:hint="Farmland name:"
                 android:textAlignment="center"
                 android:textColor="@color/darkbrown"
@@ -91,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:text="Address"
                 android:textAlignment="center"
                 android:textSize="16dp" />
@@ -103,13 +106,15 @@
                 android:hint="Farmland address:"
                 android:textAlignment="center"
                 android:textColor="@color/darkbrown"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:fontFamily="@font/amaranth" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:text="Farming Budget"
                 android:textAlignment="center"
                 android:textSize="16dp" />
@@ -119,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:hint="Farm budget:"
                 android:textAlignment="center"
                 android:textColor="#4CAF50"
@@ -129,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:text="Area Size"
                 android:textAlignment="center"
                 android:textSize="16dp" />
@@ -138,6 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/amaranth"
                 android:hint="Area Size:"
                 android:textAlignment="center"
                 android:textColor="@color/darkbrown"
@@ -150,6 +158,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:backgroundTint="@color/GREEN"
+                android:fontFamily="@font/amaranth"
                 android:text="Book"
                 app:cornerRadius="10dp" />
         </LinearLayout>
