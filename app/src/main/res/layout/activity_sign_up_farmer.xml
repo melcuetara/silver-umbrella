@@ -21,7 +21,7 @@
                 android:background="@color/MINIMAL">
 
                 <ImageButton
-                    android:id="@+id/btn_backss"
+                    android:id="@+id/btn_backs"
                     android:layout_width="60dp"
                     android:layout_height="48dp"
                     android:layout_alignParentTop="true"

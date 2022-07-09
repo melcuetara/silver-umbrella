@@ -10,17 +10,10 @@ public class UserModel {
     private String address;
     private String imageUrl;
 
-    public UserModel() {};
-
-    public UserModel(String firstName, String lastName, int age, String gender, String contactNumber, String address, String imageUrl) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
-        this.contactNumber = contactNumber;
-        this.address = address;
-        this.imageUrl = imageUrl;
+    public UserModel() {
     }
+
+    ;
 
     public UserModel(String firstName, String lastName, int age, String gender, String contactNumber, String address) {
         this.firstName = firstName;
@@ -29,6 +22,7 @@ public class UserModel {
         this.gender = gender;
         this.contactNumber = contactNumber;
         this.address = address;
+
     }
 
     public String getFirstName() {
