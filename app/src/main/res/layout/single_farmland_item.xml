@@ -43,7 +43,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/tv_farm_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -64,7 +64,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/tv_farm_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -85,7 +85,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/tv_farm_budget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -106,7 +106,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/tv_farm_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -117,7 +117,7 @@
                 android:textSize="16dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_button"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginLeft="20dp"
