@@ -117,7 +117,7 @@
                 android:textSize="16dp" />
 
             <Button
-                android:id="@+id/btn_button"
+                android:id="@+id/btn_book"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginLeft="20dp"

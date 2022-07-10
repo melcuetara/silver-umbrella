@@ -56,4 +56,8 @@ public class FarmModel {
     public void setFarmingBudget(double farmingBudget) {
         this.farmingBudget = farmingBudget;
     }
+
+    public String getValue() {
+        return getFarmAddress() + getFarmName() + getFarmImageUrl() + getFarmArea() + getFarmArea();
+    }
 }

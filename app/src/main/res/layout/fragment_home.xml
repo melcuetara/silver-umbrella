@@ -8,6 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:scrollbars="horizontal"
         android:id="@+id/rv_farmland"
         android:layout_width="409dp"
         android:layout_height="729dp"
