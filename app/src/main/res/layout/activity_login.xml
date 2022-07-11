@@ -66,7 +66,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_heading"
                         android:hint="Email Address"
-                        app:errorEnabled="true">
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/darkbrown"
+                        app:startIconTint="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_email"
@@ -88,8 +92,12 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/et_email_layout"
                         android:hint="Password"
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
                         app:errorEnabled="true"
-                        app:passwordToggleEnabled="true">
+                        app:hintTextColor="@color/darkbrown"
+                        app:passwordToggleEnabled="true"
+                        app:startIconTint="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_password"
