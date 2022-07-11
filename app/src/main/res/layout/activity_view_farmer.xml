@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/MINIMAL">
+
+        <ImageButton
+            android:id="@+id/btn_backss"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/darkbrown"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:background="#CCA586"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <TextView
+            android:id="@+id/tv_heading5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/amaranth"
+            android:text="Create Account"
+            android:textColor="@color/WHITE"
+            android:textSize="20sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@android:color/darker_gray"
+            app:cardCornerRadius="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="161dp"
+            android:layout_height="160dp"
+            android:layout_margin="15dp">
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="73dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_user_image"
+                    app:srcCompat="@drawable/ic_baseline_person_24"
+                    tools:srcCompat="@drawable/ic_baseline_person_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher_round" />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
