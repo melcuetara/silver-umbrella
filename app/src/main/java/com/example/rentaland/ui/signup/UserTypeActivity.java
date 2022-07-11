@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.rentaland.databinding.ActivityUserTypeBinding;
@@ -22,11 +23,20 @@ public class UserTypeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         bundle = new Bundle();
 
-        if (binding.rbFarmer.isChecked()) {
-            userType = "user_farmer";
-        } else {
-            userType = "user_investor";
-        }
+        userType = "user_farmer";
+        binding.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.rbFarmer.isChecked()) {
+
+                } else if(binding.rbInvestor.isChecked()) {
+                    userType = "user_investor";
+                }
+                Toast.makeText(getApplicationContext(), "user type: " + userType, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         bundle.putString("userType", userType);
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -71,13 +71,13 @@
             android:text="Address"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_description_notification"
+            app:layout_constraintBottom_toTopOf="@+id/tv_contact_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
             app:layout_constraintTop_toBottomOf="@+id/tv_name_notification" />
 
         <TextView
-            android:id="@+id/tv_description_notification"
+            android:id="@+id/tv_contact_notification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

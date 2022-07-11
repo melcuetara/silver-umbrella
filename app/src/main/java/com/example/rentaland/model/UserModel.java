@@ -80,4 +80,8 @@ public class UserModel {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

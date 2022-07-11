@@ -57,13 +57,13 @@
             android:textColor="@color/darkbrown"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_type_notification"
+            app:layout_constraintBottom_toTopOf="@+id/tv_address_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_user_type_notification"
+            android:id="@+id/tv_address_notification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -73,7 +73,7 @@
             android:text="Address"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_description_notification"
+            app:layout_constraintBottom_toTopOf="@+id/tv_contact_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
             app:layout_constraintTop_toBottomOf="@+id/tv_name_notification" />
@@ -89,13 +89,14 @@
             android:text="Date"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_decline_famNotification"
+            app:layout_constraintBottom_toTopOf="@+id/btn_decline_notification"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description_notification" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_notification" />
 
         <TextView
-            android:id="@+id/tv_description_notification"
+            android:id="@+id/tv_contact_notification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -108,10 +109,10 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_date_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_type_notification" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_notification" />
 
         <Button
-            android:id="@+id/btn_accept_fNotifitication"
+            android:id="@+id/btn_accept_notification"
             android:layout_width="130dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
@@ -123,13 +124,13 @@
             android:textSize="12sp"
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_decline_famNotification"
+            app:layout_constraintEnd_toStartOf="@+id/btn_decline_notification"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_date_notification"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/btn_decline_famNotification"
+            android:id="@+id/btn_decline_notification"
             android:layout_width="130dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -141,7 +142,7 @@
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_accept_fNotifitication"
+            app:layout_constraintStart_toEndOf="@+id/btn_accept_notification"
             app:layout_constraintTop_toBottomOf="@+id/tv_date_notification" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

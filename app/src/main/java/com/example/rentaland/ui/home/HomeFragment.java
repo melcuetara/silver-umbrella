@@ -34,10 +34,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
 
     private FirebaseDatabase rootNode;
+    private DatabaseReference referenceAccepted;
     private DatabaseReference reference;
     private DatabaseReference referenceBook;
     private FirebaseAuth mAuth;
@@ -49,8 +52,10 @@ public class HomeFragment extends Fragment {
 
     private Button mBookButton;
     private BookModel mBook;
+    private ArrayList<String> acceptedList = new ArrayList<>();
     private ArrayList<Boolean> mIsBooking = new ArrayList<>();
     private ArrayList<FarmModel> farmModels = new ArrayList<>();
+    private ArrayList<String> mAcceptedList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +67,7 @@ public class HomeFragment extends Fragment {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference().child("farmland");
         referenceBook = rootNode.getReference().child("book_request");
+        referenceAccepted = rootNode.getReference().child("book_accepted");
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -81,7 +87,6 @@ public class HomeFragment extends Fragment {
         binding.rvFarmland.setLayoutManager(HorizontalLayout);
         populateRecyclerView();
         setOnClickListener();
-
     }
 
     @Override
@@ -91,6 +96,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void populateRecyclerView() {
+        Log.d("FARMLAND", "Populate RecyclerView");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -110,6 +116,7 @@ public class HomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
     }
 
@@ -127,6 +134,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void bookFarm(FarmModel farmModel) {
+        Log.d("FARMLAND", "Bookfarm");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -161,18 +169,25 @@ public class HomeFragment extends Fragment {
     }
 
     private void checkRequest(String key) {
+        Log.d("FARMLAND", "Check Request");
         referenceBook.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
+                if (!snapshot.hasChildren()) {
+                    mIsBooking.add(false);
+                } else if (snapshot.exists()) {
+                    long i = 0;
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         if (dataSnapshot.child("farmerId").getValue().toString().equals(key) &&
                                 dataSnapshot.child("investorId").getValue().toString().equals(user.getUid())) {
                             mIsBooking.add(true);
-                            return;
+
+                            break;
+                        } else if (i == snapshot.getChildrenCount() - 1) {
+                            mIsBooking.add(false);
                         }
+                        i++;
                     }
-                    mIsBooking.add(false);
                 }
                 farmAdapter = new FarmAdapter(getContext(), farmModels, listener, mIsBooking);
                 binding.rvFarmland.setAdapter(farmAdapter);

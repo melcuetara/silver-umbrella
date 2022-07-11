@@ -87,8 +87,8 @@ public class FarmAdapter extends RecyclerView.Adapter<FarmAdapter.ViewHolder> {
             farmBudget = itemView.findViewById(R.id.tv_farm_budget);
             farmArea = itemView.findViewById(R.id.tv_farm_area);
             btnBook = itemView.findViewById(R.id.btn_book);
-            btnBook.setOnClickListener(this);
 
+            btnBook.setOnClickListener(this);
             itemView.setOnClickListener(this);
         }
 
