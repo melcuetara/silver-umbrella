@@ -331,7 +331,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/amaranth"
-                    android:text="Albums"
+                    android:text="Activities Albums"
                     android:textColor="@color/darkbrown"
                     android:textSize="16dp"
                     android:textStyle="bold"
