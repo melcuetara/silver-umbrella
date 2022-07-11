@@ -112,7 +112,7 @@ public class GalleryFragment extends Fragment {
     }
 
     private void populateUserList(String investorId) {
-        Log.d(TAG, "investorId: " +investorId);
+        Log.d(TAG, "investorId: " + investorId);
         referenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -142,10 +142,22 @@ public class GalleryFragment extends Fragment {
     private void setOnClickListener() {
         mListener = new NotificationAdapter.RecyclerViewClickListener() {
             @Override
-            public void onClick(View v, String key, int position) {
-                if (v.getId() == v.findViewById(R.id.btn_accept_notification).getId()) {
-                    reference.push().setValue(mBookList.get(position));
-                    referenceBook.child(key).removeValue();
+            public void onClick(View v, String position, int adapterPosition, int btnDecline, int btnAccept, int id) {
+                try {
+                    Log.d(TAG, "view" + id);
+                    Log.d(TAG, "accept" + btnAccept);
+                    Log.d(TAG, "decline" + btnDecline);
+                    if (v.getId() == btnAccept) {
+                        reference.push().setValue(mBookList.get(adapterPosition));
+                        Toast.makeText(getContext(), "Accept", Toast.LENGTH_SHORT).show();
+                        referenceBook.child(position).removeValue();
+                    }
+                    if (v.getId() == btnDecline) {
+                        referenceBook.child(position).removeValue();
+                        Toast.makeText(getContext(), "Decline", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Log.d(TAG, e.getMessage());
                 }
             }
         };

@@ -1,6 +1,7 @@
 package com.example.rentaland.ui.gallery;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,18 +87,20 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         @Override
         public void onClick(View v) {
-            mListener.onClick(v, keyList.get(getAdapterPosition()), getAdapterPosition());
-            if (v.getId() == mAccept.getId())
-            mBookList.remove(getAdapterPosition());
-            mUserList.remove(getAdapterPosition());
-            keyList.remove(getAdapterPosition());
-            notifyItemRemoved(getAdapterPosition());
-            notifyItemRangeChanged(getAdapterPosition(), mBookList.size());
+            mListener.onClick(v, keyList.get(getAdapterPosition()), getAdapterPosition(), mDecline.getId(), mAccept.getId(), v.getId());
+            Log.d("notification: ", "" + v.getId() + " " + mDecline.getId());
+            if (v.getId() == mAccept.getId() || v.getId() == mDecline.getId()) {
+                mBookList.remove(getAdapterPosition());
+                mUserList.remove(getAdapterPosition());
+                keyList.remove(getAdapterPosition());
+                notifyItemRemoved(getAdapterPosition());
+                notifyItemRangeChanged(getAdapterPosition(), mBookList.size());
+            }
         }
     }
 
     public interface RecyclerViewClickListener {
 
-        void onClick(View v, String position, int adapterPosition);
+        void onClick(View v, String position, int adapterPosition, int btnDecline, int btnAccept, int id);
     }
 }
