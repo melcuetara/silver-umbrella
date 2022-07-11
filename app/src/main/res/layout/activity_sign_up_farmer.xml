@@ -68,13 +68,24 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
+                        android:id="@+id/iv_farm_image2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/logoback"
+                        tools:srcCompat="@drawable/logoback" />
+
+                    <ImageView
                         android:id="@+id/iv_farm_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/logoback" />
+                        app:srcCompat="@drawable/logoback"
+                        tools:srcCompat="@drawable/logoback" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -113,7 +124,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/iv_farm_image"
                         android:hint="Farm Name"
-                        app:errorEnabled="true">
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_farm_name"
@@ -135,7 +149,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/et_farm_name_layout"
                         android:hint="Farm Address"
-                        app:errorEnabled="true">
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_farm_address"
@@ -157,7 +174,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/et_farm_area_layout"
                         android:hint="Farm Budget"
-                        app:errorEnabled="true">
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_farm_budget"
@@ -179,7 +199,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/et_farm_address_layout"
                         android:hint="Farm Area"
-                        app:errorEnabled="true">
+                        app:boxStrokeColor="@color/darkbrown"
+                        app:endIconTint="@color/darkbrown"
+                        app:errorEnabled="true"
+                        app:hintTextColor="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_farm_area"

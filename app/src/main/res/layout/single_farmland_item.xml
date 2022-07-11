@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp"
+    android:layout_margin="20dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="610dp"
+        android:background="@color/GRAY"
+        android:backgroundTint="@color/GRAY"
         android:textAlignment="center">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -29,104 +31,145 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logoback" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/amaranth"
-                android:text="Farmland"
-                android:textAlignment="center"
-                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_farm_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/amaranth"
                 android:hint="Farmland name:"
                 android:textAlignment="center"
-                android:textColor="@color/darkbrown"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/amaranth"
-                android:text="Address"
-                android:textAlignment="center"
-                android:textSize="16dp" />
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_farm_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/tv_farm_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="40dp"
+                android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="#ED7870"
                 android:fontFamily="@font/amaranth"
                 android:hint="Farmland address:"
-                android:textAlignment="center"
+                android:paddingLeft="15dp"
                 android:textColor="@color/darkbrown"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_farm_image" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amaranth"
+                android:paddingLeft="20dp"
                 android:text="Farming Budget"
-                android:textAlignment="center"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_farm_address" />
 
             <TextView
                 android:id="@+id/tv_farm_budget"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="15dp"
                 android:fontFamily="@font/amaranth"
                 android:hint="Farm budget:"
-                android:textAlignment="center"
+                android:paddingLeft="15dp"
                 android:textColor="#4CAF50"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView12"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amaranth"
+                android:paddingLeft="20dp"
                 android:text="Area Size"
-                android:textAlignment="center"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_farm_budget" />
 
             <TextView
                 android:id="@+id/tv_farm_area"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/amaranth"
                 android:hint="Area Size:"
-                android:textAlignment="center"
+                android:paddingLeft="15dp"
                 android:textColor="@color/darkbrown"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
             <Button
                 android:id="@+id/btn_book"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/GREEN"
                 android:fontFamily="@font/amaranth"
                 android:text="Book"
-                app:cornerRadius="10dp" />
-        </LinearLayout>
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="#6778D6"
+                android:paddingLeft="15dp"
+                android:text="P"
+                android:textColor="#4CAF50"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_farm_budget"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_baseline_photo_size_select_small_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="#CD795E"
+                android:paddingLeft="15dp"
+                android:text="m2"
+                android:textColor="@color/darkbrown"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_farm_area"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

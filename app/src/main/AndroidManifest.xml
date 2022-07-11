@@ -10,15 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentaland">
         <activity
-            android:name=".MessageListActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.login.MessageListActivity"
             android:exported="false"
             android:label="@string/title_activity_message_list" />
-        <activity
-            android:name=".MessageActivity"
-            android:exported="false" />
         <activity
             android:name=".BookingActivity"
             android:exported="false" />
