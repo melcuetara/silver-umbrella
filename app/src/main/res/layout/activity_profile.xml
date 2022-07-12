@@ -194,7 +194,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_contact_notification6" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
+                    android:id="@+id/cv_land_title"
                     android:layout_width="250dp"
                     android:layout_height="150dp"
                     app:cardCornerRadius="20dp"
@@ -249,7 +249,7 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tv_address_notification4"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                    app:layout_constraintTop_toBottomOf="@+id/cv_land_title" />
 
                 <TextView
                     android:id="@+id/tv_address_notification4"
@@ -262,7 +262,7 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/tv_address_notification3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                    app:layout_constraintTop_toBottomOf="@+id/cv_land_title" />
 
                 <TextView
                     android:id="@+id/tv_contact_notification8"
@@ -331,7 +331,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/amaranth"
-                    android:text="Albums"
+                    android:text="Activities Albums"
                     android:textColor="@color/darkbrown"
                     android:textSize="16dp"
                     android:textStyle="bold"

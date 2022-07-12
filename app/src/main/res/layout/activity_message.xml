@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/WHITE"
-    tools:context=".MessageActivity">
+    android:background="@color/WHITE">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_chat_userChat"
@@ -23,10 +22,11 @@
     <EditText
         android:id="@+id/et_message_userChat"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:inputType="textMultiLine"
+        android:minHeight="48dp"
         android:paddingLeft="10dp"
         android:paddingRight="5dp"
         android:textColor="@color/darkbrown"
@@ -70,8 +70,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/darkbrown"
-            android:tint="@color/WHITE_L"
             app:srcCompat="@drawable/ic_baseline_camera_alt_24"
+            app:tint="@color/WHITE_L"
             tools:ignore="SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
