@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class GalleryFragment extends Fragment {
+public class NotificationFragment extends Fragment {
 
     private final String TAG = "GALLERY_FRAGMENT";
 
@@ -47,6 +47,7 @@ public class GalleryFragment extends Fragment {
     private ArrayList<UserModel> mUserList = new ArrayList<>();
     private ArrayList<BookModel> mBookList = new ArrayList<>();
     private ArrayList<String> keyList = new ArrayList<>();
+    private ArrayList<BookModel> mBookedList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -162,4 +163,5 @@ public class GalleryFragment extends Fragment {
             }
         };
     }
+
 }

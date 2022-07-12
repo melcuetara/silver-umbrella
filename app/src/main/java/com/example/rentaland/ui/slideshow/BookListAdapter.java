@@ -1,4 +1,4 @@
-package com.example.rentaland.ui.home;
+package com.example.rentaland.ui.slideshow;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,45 +7,41 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.FarmModel;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
+import com.example.rentaland.ui.home.FarmAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class FarmAdapter extends RecyclerView.Adapter<FarmAdapter.ViewHolder> {
+public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
 
     Context context;
     ArrayList<FarmModel> farmModels;
-    ArrayList<Boolean> isBooking;
-    private RecyclerViewClickListener listener;
+    private BookListAdapter.RecyclerViewClickListener listener;
 
-    public FarmAdapter(Context context, ArrayList<FarmModel> farmModels,
-                       RecyclerViewClickListener listener, ArrayList<Boolean> isBooking) {
+    public BookListAdapter(Context context, ArrayList<FarmModel> farmModels,
+                           BookListAdapter.RecyclerViewClickListener listener) {
         this.context = context;
         this.farmModels = farmModels;
-        this.isBooking = isBooking;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.single_farmland_item, parent, false);
-        return new ViewHolder(view);
+        return new BookListAdapter.ViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FarmAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String farmArea = "" + farmModels.get(position).getFarmArea();
         String farmBudget = "" + farmModels.get(position).getFarmingBudget();
         holder.farmName.setText(farmModels.get(position).getFarmName());
@@ -53,10 +49,6 @@ public class FarmAdapter extends RecyclerView.Adapter<FarmAdapter.ViewHolder> {
         holder.farmArea.setText(farmArea);
         holder.farmBudget.setText(farmBudget);
         Picasso.get().load(farmModels.get(position).getFarmImageUrl()).into(holder.farmImage);
-        if (isBooking.get(position)) {
-            holder.btnBook.setText("Book Request Sent");
-            holder.btnBook.setEnabled(false);
-        }
     }
 
     @Override
@@ -97,6 +89,4 @@ public class FarmAdapter extends RecyclerView.Adapter<FarmAdapter.ViewHolder> {
             listener.onClick(v, getAdapterPosition(), farmModels.get(getAdapterPosition()));
         }
     }
-
-
 }

@@ -35,10 +35,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
 
+    private static final String TAG = "HOME_FRAGMENT";
     private FirebaseDatabase rootNode;
     private DatabaseReference referenceAccepted;
     private DatabaseReference reference;
@@ -52,10 +54,9 @@ public class HomeFragment extends Fragment {
 
     private Button mBookButton;
     private BookModel mBook;
-    private ArrayList<String> acceptedList = new ArrayList<>();
     private ArrayList<Boolean> mIsBooking = new ArrayList<>();
     private ArrayList<FarmModel> farmModels = new ArrayList<>();
-    private ArrayList<String> mAcceptedList = new ArrayList<>();
+    private ArrayList<BookModel> mBookedList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +86,7 @@ public class HomeFragment extends Fragment {
                 LinearLayoutManager.HORIZONTAL,
                 false);
         binding.rvFarmland.setLayoutManager(HorizontalLayout);
-        populateRecyclerView();
+        populateBookedList();
         setOnClickListener();
     }
 
@@ -96,16 +97,18 @@ public class HomeFragment extends Fragment {
     }
 
     private void populateRecyclerView() {
-        Log.d("FARMLAND", "Populate RecyclerView");
+        Log.d(TAG, "Populate RecyclerView");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 farmModels.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        FarmModel farmerModel = dataSnapshot.getValue(FarmModel.class);
-                        farmModels.add(farmerModel);
-                        checkRequest(dataSnapshot.getKey());
+                        if (!containsId(mBookedList, dataSnapshot.getKey())) {
+                            FarmModel farmModel = dataSnapshot.getValue(FarmModel.class);
+                            farmModels.add(farmModel);
+                            checkRequest(dataSnapshot.getKey());
+                        }
                     }
                 } else {
                     Toast.makeText(getContext(), "No Farmlands Available!", Toast.LENGTH_SHORT).show();
@@ -198,5 +201,38 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "DatabaseError" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void populateBookedList() {
+        referenceAccepted.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    if (snapshot.hasChildren()) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            mBookedList.add(dataSnapshot.getValue(BookModel.class));
+                        }
+                    }
+                }
+                Log.d(TAG, "onDataChange: " + mBookedList.size());
+                populateRecyclerView();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private boolean containsId(ArrayList<BookModel> mBookedList, String key) {
+        for (int i = 0; i < mBookedList.size(); i++) {
+            Log.d(TAG, "onDataChange: key " + key);
+            Log.d(TAG, "onDataChange: Booklist id" + mBookedList.get(i).getFarmerId());
+            if (mBookedList.get(i).getFarmerId().equals(key) && mBookedList.get(i).getInvestorId().equals(user.getUid())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.BookModel;
+import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
+import com.example.rentaland.ui.slideshow.BookListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
