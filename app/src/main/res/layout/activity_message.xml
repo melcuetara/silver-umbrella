@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/et_message_userChat"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:inputType="textMultiLine"
@@ -70,7 +70,7 @@
             android:layout_height="50dp"
             android:background="@color/darkbrown"
             app:srcCompat="@drawable/ic_baseline_camera_alt_24"
-            tools:ignore="SpeakableTextPresentCheck"
-            app:tint="@color/WHITE_L" />
+            app:tint="@color/WHITE_L"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
