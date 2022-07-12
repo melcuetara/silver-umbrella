@@ -31,6 +31,6 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/darkbrown"
         app:backgroundTint="@color/darkbrown"
-        app:srcCompat="@drawable/message" />
+        app:srcCompat="@drawable/ic_baseline_logout_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
