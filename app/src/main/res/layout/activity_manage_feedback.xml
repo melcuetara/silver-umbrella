@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".ViewReportBugActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout14"
+            android:layout_width="412dp"
+            android:layout_height="wrap_content"
+            android:background="@color/MINIMAL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/report_bug_back"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck"
+                android:layout_width="58dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="99dp"
+                android:background="@color/MINIMAL"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView18"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth"
+                android:text="Provide Feedback"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.521" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout14">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    app:cardBackgroundColor="@color/GRAY"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/constraintLayout29"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout20">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout23"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <EditText
+                                android:id="@+id/editTextTextPersonName5"
+                                android:layout_width="0dp"
+                                android:layout_height="60dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:fontFamily="@font/amaranth"
+                                android:hint="Feedback Title:"
+                                android:inputType="textPersonName"
+                                android:minHeight="48dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="5dp"
+                                android:textColor="@color/darkbrown"
+                                android:textColorHint="@color/darkbrown"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                            <EditText
+                                android:id="@+id/editTextTextMultiLine"
+                                android:layout_width="0dp"
+                                android:layout_height="60dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:fontFamily="@font/amaranth"
+                                android:hint="Feedback Summary or Comment:"
+                                android:inputType="textMultiLine"
+                                android:minHeight="48dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="5dp"
+                                android:textColor="@color/darkbrown"
+                                android:textColorHint="@color/darkbrown"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+                            <EditText
+                                android:id="@+id/editTextTextPersonName6"
+                                android:layout_width="341dp"
+                                android:layout_height="60dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:fontFamily="@font/amaranth"
+                                android:hint="Feedback Date:"
+                                android:inputType="textPersonName"
+                                android:minHeight="48dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="5dp"
+                                android:textColor="@color/darkbrown"
+                                android:textColorHint="@color/darkbrown"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+
+                            <TextView
+                                android:id="@+id/textView37"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/amaranth"
+                                android:text="The Feedback information is for the recommendation of the application for future updates."
+                                android:textColor="@color/darkbrown"
+                                android:textColorHint="@color/darkbrown"
+                                android:textSize="15sp"
+                                app:layout_constraintBottom_toTopOf="@+id/textView14"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView14"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/amaranth"
+                                android:text="This information will be send to admin:"
+                                android:textStyle="italic"
+                                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp">
+
+                    <Button
+                        android:id="@+id/btn_submit_report"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="@color/darkbrown"
+                        android:fontFamily="@font/amaranth"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:cornerRadius="60dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
