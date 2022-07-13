@@ -116,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/et_contact_number_layout"
-                        android:hint="Barangay name"
+                        android:hint="Barangay Name"
                         app:boxStrokeColor="@color/darkbrown"
                         app:endIconTint="@color/darkbrown"
                         app:errorEnabled="true"
