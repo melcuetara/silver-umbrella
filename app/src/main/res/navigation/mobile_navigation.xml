@@ -14,12 +14,19 @@
     <fragment
         android:id="@+id/nav_notification"
         android:name="com.example.rentaland.ui.gallery.NotificationFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_notification"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_booklist"
         android:name="com.example.rentaland.ui.slideshow.BooklistFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_booklist"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_message"
+        android:name="com.example.rentaland.ui.message.MessageThreadFragment"
+        android:label="fragment_message" />
+
+
 </navigation>
