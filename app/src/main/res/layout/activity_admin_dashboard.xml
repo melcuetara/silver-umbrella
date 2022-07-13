@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/amaranth"
-            android:text="Government Dashboard"
+            android:text="Admin Dashboard"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -53,8 +53,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="587dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -104,16 +104,16 @@
 
                         <Button
                             android:id="@+id/btn_view_farmer2"
-                            android:layout_width="0dp"
+                            android:layout_width="311dp"
                             android:layout_height="60dp"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
-                            android:text="Manage Feedback"
+                            android:text="View Report"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             app:cornerRadius="20dp"
-                            app:layout_constraintBottom_toTopOf="@+id/textView15"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer" />
@@ -124,57 +124,58 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
                             android:fontFamily="@font/amaranth"
-                            android:text="Add farmer to RentaLand"
+                            android:text="Manage Farmer"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toTopOf="@+id/textView34"
                             app:layout_constraintEnd_toStartOf="@+id/imageView10"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <Button
                             android:id="@+id/btn_register_farmer"
                             android:layout_width="311dp"
                             android:layout_height="60dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
-                            android:text="View Farmer"
+                            android:text="Manage User"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             app:cornerRadius="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2" />
 
                         <Button
                             android:id="@+id/btn_view_farmer"
-                            android:layout_width="0dp"
+                            android:layout_width="311dp"
                             android:layout_height="60dp"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
-                            android:text="View Profile"
+                            android:text="Register local Government"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             app:cornerRadius="20dp"
                             app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer2"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
                         <TextView
                             android:id="@+id/textView34"
                             android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginBottom="20dp"
                             android:fontFamily="@font/amaranth"
-                            android:hint="This is to add farmers from the local area of this barangay, enabling it to add, edit and delete."
+                            android:hint="This is to register a farmer, update information and delete account"
                             android:textAlignment="center"
                             android:textSize="14sp"
                             android:textStyle="italic"
-                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer"
                             app:layout_constraintEnd_toStartOf="@+id/imageView10"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -183,10 +184,10 @@
                             android:id="@+id/imageView10"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="15dp"
-                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2"
+                            app:layout_constraintStart_toEndOf="@+id/textView34"
+                            app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/farmer_profile" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -197,4 +198,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
