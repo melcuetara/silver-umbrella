@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,6 +20,7 @@
 
                 <ImageButton
                     android:id="@+id/btn_backss"
+                    tools:ignore="SpeakableTextPresentCheck"
                     android:layout_width="60dp"
                     android:layout_height="48dp"
                     android:layout_alignParentTop="true"
@@ -30,8 +30,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/darkbrown"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    app:tint="@color/darkbrown" />
 
                 <TextView
                     android:id="@+id/tv_heading5"
@@ -40,7 +39,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="@font/amaranth"
-                    android:text="View Farmer"
+                    android:text="View Investor"
                     android:textColor="@color/WHITE"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -73,14 +72,14 @@
 
                         <ImageView
                             android:id="@+id/iv_user_image"
+                            tools:srcCompat="@drawable/ic_baseline_person_24"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
                             android:src="@mipmap/ic_launcher_round"
-                            app:srcCompat="@drawable/ic_baseline_person_24"
-                            tools:srcCompat="@drawable/ic_baseline_person_24" />
+                            app:srcCompat="@drawable/ic_baseline_person_24" />
                     </androidx.cardview.widget.CardView>
 
                 </androidx.cardview.widget.CardView>
