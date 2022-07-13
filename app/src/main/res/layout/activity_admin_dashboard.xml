@@ -136,14 +136,13 @@
                             android:id="@+id/btn_register_farmer"
                             android:layout_width="311dp"
                             android:layout_height="60dp"
-                            android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
                             android:text="Manage User"
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             app:cornerRadius="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer2"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2" />
@@ -189,6 +188,23 @@
                             app:layout_constraintStart_toEndOf="@+id/textView34"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/farmer_profile" />
+
+                        <Button
+                            android:id="@+id/btn_register_farmer2"
+                            android:layout_width="311dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:backgroundTint="@color/darkbrown"
+                            android:fontFamily="@font/amaranth"
+                            android:text="View Feedback"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:cornerRadius="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/btn_register_farmer" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>

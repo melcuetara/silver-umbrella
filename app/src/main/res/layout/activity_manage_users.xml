@@ -28,7 +28,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/amaranth"
-                android:text="Manage Feedback"
+                android:text="Manage Users"
                 android:textColor="@color/WHITE"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
