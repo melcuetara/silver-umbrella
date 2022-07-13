@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/font/amaranth.xml" value="0.11944444444444445" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_booking.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_farmer_profile.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_message.xml" value="0.25" />
@@ -13,6 +15,7 @@
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_sign_up_credentials.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_sign_up_farmer.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_sign_up_farmland.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_sign_up_investor.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_user_type.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_view_farmer.xml" value="0.25" />

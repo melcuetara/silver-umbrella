@@ -97,7 +97,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/textView2"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/farmer" />
+                                app:srcCompat="@drawable/farmer_profile" />
 
                             <TextView
                                 android:id="@+id/textView2"
