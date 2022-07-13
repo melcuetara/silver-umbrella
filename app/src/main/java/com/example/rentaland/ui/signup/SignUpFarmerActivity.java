@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
-import com.example.rentaland.databinding.ActivitySignUpFarmerBinding;
+import com.example.rentaland.databinding.ActivitySignUpFarmlandBinding;
 import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,7 +31,7 @@ public class SignUpFarmerActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    private ActivitySignUpFarmerBinding binding;
+    private ActivitySignUpFarmlandBinding binding;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private FirebaseDatabase database;
@@ -46,7 +46,7 @@ public class SignUpFarmerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySignUpFarmerBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpFarmlandBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
