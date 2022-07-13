@@ -1,15 +1,10 @@
 package com.example.rentaland.ui.message;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
@@ -17,11 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.rentaland.R;
 import com.example.rentaland.databinding.FragmentMessageBinding;
-import com.example.rentaland.model.FarmModel;
+import com.example.rentaland.model.MessageThreadModel;
 import com.example.rentaland.model.UserModel;
-import com.example.rentaland.ui.home.FarmAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,9 +41,11 @@ public class MessageThreadFragment extends Fragment {
     private MessageThreadAdapter mAdapter;
     private MessageThreadAdapter.RecyclerViewClickListener mListener;
 
-    private String mOtherUserType;
-    private String mUserType;
+    private String mUserTypeRef;
+    private String mThreadId;
     private ArrayList<UserModel> mUserList;
+    private ArrayList<String> mKeyList;
+    private UserModel mCurrentUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,10 +54,11 @@ public class MessageThreadFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mRootNode = FirebaseDatabase.getInstance();
         mUser = mAuth.getCurrentUser();
-        mMessageReference = mRootNode.getReference().child("message");
+        mMessageReference = mRootNode.getReference().child("message_thread");
         mFarmerRef = mRootNode.getReference().child("user_farmer");
         mInvestorRef = mRootNode.getReference().child("user_investor");
         mUserList = new ArrayList<>();
+        mKeyList = new ArrayList<>();
         return binding.getRoot();
     }
 
@@ -92,13 +88,16 @@ public class MessageThreadFragment extends Fragment {
                 mUserList.clear();
                 if (snapshot.exists()) {
                     if (snapshot.hasChildren()) {
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Log.d(TAG, "onDataChange: " + dataSnapshot.getValue().toString());
-                            for (DataSnapshot dataSnapshotDetails: dataSnapshot.getChildren()) {
+                            for (DataSnapshot dataSnapshotDetails : dataSnapshot.getChildren()) {
                                 if (dataSnapshotDetails.getValue().equals(mUser.getUid())) {
                                     if (dataSnapshotDetails.getKey().equals("investorId")) {
+                                        mThreadId = dataSnapshot.getKey();
+                                        mUserTypeRef = "user_investor";
                                         populateUserList("user_farmer", dataSnapshot.child("farmerId").getValue().toString());
                                     } else {
+                                        mUserTypeRef = "user_farmer";
                                         populateUserList("user_investor", dataSnapshot.child("investorId").getValue().toString());
                                     }
                                 }
@@ -115,17 +114,16 @@ public class MessageThreadFragment extends Fragment {
         });
     }
 
-    private void getMessages() {
-        mMessageReference.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void populateUserList(String key, String id) {
+        Log.d(TAG, "populateUserList: " + key + " " + id);
+        mRootNode.getReference(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    if (snapshot.hasChildren()) {
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                            if (dataSnapshot.child(mUserType).getValue().toString().equals(mUser.getUid())) {
-
-                            }
-                        }
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (dataSnapshot.getKey().equals(id)) {
+                        mKeyList.add(id);
+                        mUserList.add(dataSnapshot.getValue(UserModel.class));
+                        setCurrentUser();
                     }
                 }
             }
@@ -137,14 +135,14 @@ public class MessageThreadFragment extends Fragment {
         });
     }
 
-    private void populateUserList(String key, String id) {
-        Log.d(TAG, "populateUserList: " +key + " " + id);
-        mRootNode.getReference(key).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void setCurrentUser() {
+        mRootNode.getReference(mUserTypeRef).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    if (dataSnapshot.getKey().equals(id)) {
-                        mUserList.add(dataSnapshot.getValue(UserModel.class));
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (dataSnapshot.getKey().equals(mUser.getUid())) {
+                        Log.d(TAG, "setCurrentUser: " + dataSnapshot.getKey());
+                        mCurrentUser = dataSnapshot.getValue(UserModel.class);
                         mAdapter = new MessageThreadAdapter(getContext(), mUserList, mListener);
                         binding.rvMessage.setAdapter(mAdapter);
                     }
@@ -162,10 +160,30 @@ public class MessageThreadFragment extends Fragment {
         mListener = new MessageThreadAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View v, int position, UserModel userModel) {
-                Log.d(TAG, "onClick: Clicked");
-                Intent intent = new Intent(getContext(), MessageActivity.class);
-                intent.putExtra("userModel", userModel);
-                startActivity(intent);
+                mRootNode.getReference("message_thread").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int i = 0;
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            if (i == position) {
+                                MessageThreadModel messages = dataSnapshot.getValue(MessageThreadModel.class);
+                                Log.d(TAG, "onDataChange: " + messages.getMessage().get(1).getSender());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+//                Log.d(TAG, "Thread ID: " + mThreadId);
+//                Log.d(TAG, "onClick: Clicked" + mKeyList.get(position));
+//                Intent intent = new Intent(getContext(), MessageActivity.class);
+//                intent.putExtra("otherUser", userModel);
+//                intent.putExtra("userId", mKeyList.get(position));
+//                intent.putExtra("currentUser", mCurrentUser);
+//                startActivity(intent);
             }
         };
     }
