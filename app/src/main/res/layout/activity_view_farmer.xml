@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/amaranth"
-                    android:text="Name"
+                    android:text="Select Photo"
                     android:textAlignment="center"
                     android:textColor="@color/darkbrown"
                     android:textSize="20sp"
