@@ -71,12 +71,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
+            app:layout_constraintTop_toBottomOf="@+id/et_search_crowdFunding2">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,5 +91,42 @@
                     android:padding="20dp" />
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/btn_search_crowdFunding2"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/darkbrown"
+            android:fontFamily="@font/amaranth"
+            android:text="Search"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/et_search_crowdFunding2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
+
+        <EditText
+            android:id="@+id/et_search_crowdFunding2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:drawablePadding="5dp"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/darkbrown"
+            android:textColorHint="@color/darkbrown"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+            app:layout_constraintEnd_toStartOf="@+id/btn_search_crowdFunding2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
