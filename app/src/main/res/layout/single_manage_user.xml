@@ -57,13 +57,13 @@
             android:textColor="@color/darkbrown"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_type_notification"
+            app:layout_constraintBottom_toTopOf="@+id/tv_address_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_user_type_notification"
+            android:id="@+id/tv_address_notification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -79,20 +79,53 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_name_notification" />
 
         <TextView
+            android:id="@+id/tv_date_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/amaranth"
+            android:paddingLeft="5dp"
+            android:text="UserType"
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_decline_notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_notification" />
+
+        <TextView
             android:id="@+id/tv_contact_notification"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
             android:paddingLeft="5dp"
-            android:text="Accept your Book Request"
-            android:textAlignment="center"
-            android:textColor="@color/GREEN"
-            android:textSize="18sp"
+            android:text="Contact No."
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_date_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_type_notification" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address_notification" />
+
+        <Button
+            android:id="@+id/btn_decline_notification"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#DC5D5D"
+            android:fontFamily="@font/amaranth"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_baseline_delete_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date_notification"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

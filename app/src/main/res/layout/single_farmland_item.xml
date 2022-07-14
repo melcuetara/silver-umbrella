@@ -132,7 +132,7 @@
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/GREEN"
                 android:fontFamily="@font/amaranth"
-                android:text="Book"
+                android:text="View Farmer"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

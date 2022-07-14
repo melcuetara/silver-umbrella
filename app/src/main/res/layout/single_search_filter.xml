@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/WHITE"
+    android:padding="20dp">
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_as_max_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_fb_min_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Min"
+        app:boxStrokeColor="@color/darkbrown"
+        app:endIconTint="@color/darkbrown"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/darkbrown"
+        app:layout_constraintEnd_toStartOf="@+id/et_fb_max_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification4"
+        app:startIconTint="@color/darkbrown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fb_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/darkbrown"
+            android:fontFamily="@font/amaranth"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_fb_max_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Max"
+        app:boxStrokeColor="@color/darkbrown"
+        app:endIconTint="@color/darkbrown"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/darkbrown"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox"
+        app:layout_constraintStart_toEndOf="@+id/et_fb_min_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification4"
+        app:startIconTint="@color/darkbrown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_fb_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/darkbrown"
+            android:fontFamily="@font/amaranth"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_as_min_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Min"
+        app:boxStrokeColor="@color/darkbrown"
+        app:endIconTint="@color/darkbrown"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/darkbrown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/et_as_max_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3"
+        app:startIconTint="@color/darkbrown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_as_min"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/darkbrown"
+            android:fontFamily="@font/amaranth"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_as_max_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Max"
+        app:boxStrokeColor="@color/darkbrown"
+        app:endIconTint="@color/darkbrown"
+        app:errorEnabled="true"
+        app:hintTextColor="@color/darkbrown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/et_as_min_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3"
+        app:startIconTint="@color/darkbrown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_as_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/darkbrown"
+            android:fontFamily="@font/amaranth"
+            android:inputType="textPersonName"
+            android:textColor="@color/darkbrown"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_name_notification3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Farming Budget:"
+        android:textColor="@color/darkbrown"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_as_min_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_fb_min_layout" />
+
+    <Button
+        android:id="@+id/btn_search_crowdFunding"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/darkbrown"
+        android:fontFamily="@font/amaranth"
+        android:text="Search"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
+
+    <TextView
+        android:id="@+id/tv_name_notification4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Area Size"
+        android:textColor="@color/darkbrown"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_fb_min_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search_crowdFunding" />
+
+    <EditText
+        android:id="@+id/et_search_crowdFunding"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawablePadding="5dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/darkbrown"
+        android:textColorHint="@color/darkbrown"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search_crowdFunding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_fb_max_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_notification4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
