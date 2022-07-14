@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/MINIMAL"
+    tools:context=".StartLogoActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_main"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="160dp"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/darkbrown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_piclogo"
+        android:layout_width="200dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_titlelogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977"
+        app:srcCompat="@drawable/piclogo" />
+
+    <ImageView
+        android:id="@+id/img_titlelogo"
+        android:layout_width="203dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/pb_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/titlelogs" />
+</androidx.constraintlayout.widget.ConstraintLayout>
