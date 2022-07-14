@@ -1,6 +1,7 @@
 package com.example.rentaland.ui.gallery;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.rentaland.R;
 import com.example.rentaland.databinding.FragmentGalleryBinding;
 import com.example.rentaland.model.BookModel;
+import com.example.rentaland.model.MessageModel;
+import com.example.rentaland.model.MessageThreadModel;
 import com.example.rentaland.model.UserModel;
+import com.example.rentaland.ui.message.MessageThreadAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class NotificationFragment extends Fragment {
@@ -36,11 +41,13 @@ public class NotificationFragment extends Fragment {
     private FirebaseDatabase rootNode;
     private DatabaseReference referenceUser;
     private DatabaseReference referenceBook;
+    private DatabaseReference referenceThread;
     private DatabaseReference reference;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
     private NotificationAdapter.RecyclerViewClickListener mListener;
+    private MessageThreadModel threadModel;
     private UserModel mUserModel;
     private BookModel mBookModel;
     private NotificationAdapter mAdapter;
@@ -54,11 +61,13 @@ public class NotificationFragment extends Fragment {
         GalleryViewModel galleryViewModel =
                 new ViewModelProvider(this).get(GalleryViewModel.class);
         mAuth = FirebaseAuth.getInstance();
+        threadModel = new MessageThreadModel();
         user = mAuth.getCurrentUser();
         rootNode = FirebaseDatabase.getInstance();
         referenceUser = rootNode.getReference().child("user_investor");
         referenceBook = rootNode.getReference().child("book_request");
         reference = rootNode.getReference().child("book_accepted");
+        referenceThread = rootNode.getReference().child("message_thread");
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -152,10 +161,21 @@ public class NotificationFragment extends Fragment {
                         reference.push().setValue(mBookList.get(adapterPosition));
                         Toast.makeText(getContext(), "Accept", Toast.LENGTH_SHORT).show();
                         referenceBook.child(position).removeValue();
+
+
                     }
                     if (v.getId() == btnDecline) {
                         referenceBook.child(position).removeValue();
                         Toast.makeText(getContext(), "Decline", Toast.LENGTH_SHORT).show();
+                        threadModel.setFarmerId(user.getUid());
+                        threadModel.setInvestorId(mBookList.get(adapterPosition).getInvestorId());
+                        threadModel.setMessage(new ArrayList<MessageModel>() {
+                            {
+                                add(new MessageModel("I accepted your Book Request", user.getUid(), "14/07/2022"));
+                            }
+
+                        });
+                        referenceThread.push().setValue(threadModel);
                     }
                 } catch (Exception e) {
                     Log.d(TAG, e.getMessage());

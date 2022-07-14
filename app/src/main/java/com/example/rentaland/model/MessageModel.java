@@ -9,6 +9,12 @@ public class MessageModel implements Parcelable {
     private String sender;
     private String date;
 
+    public MessageModel(String body, String sender, String date) {
+        this.body = body;
+        this.sender = sender;
+        this.date = date;
+    }
+
     public MessageModel() {}
     protected MessageModel(Parcel in) {
         body = in.readString();

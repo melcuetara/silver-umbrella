@@ -1,5 +1,6 @@
 package com.example.rentaland.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,12 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.rentaland.R;
+import com.example.rentaland.SearchActivity;
 import com.example.rentaland.databinding.FragmentHomeBinding;
 import com.example.rentaland.model.BookModel;
 import com.example.rentaland.model.FarmModel;
@@ -57,6 +61,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Boolean> mIsBooking = new ArrayList<>();
     private ArrayList<FarmModel> farmModels = new ArrayList<>();
     private ArrayList<BookModel> mBookedList = new ArrayList<>();
+    private Bundle bundle;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class HomeFragment extends Fragment {
         reference = rootNode.getReference().child("farmland");
         referenceBook = rootNode.getReference().child("book_request");
         referenceAccepted = rootNode.getReference().child("book_accepted");
+        bundle = new Bundle();
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -79,6 +85,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.btnHomeFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
         binding.rvFarmland.setLayoutManager(new LinearLayoutManager(getContext()));
         HorizontalLayout
                 = new LinearLayoutManager(
@@ -96,9 +109,27 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (data.getExtras() != null) {
+                bundle = data.getExtras();
+                Log.d(TAG, "onActivityResult: " + bundle);
+                populateRecyclerView();
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
+
     private void populateRecyclerView() {
+
+        mIsBooking.clear();
+        farmModels.clear();
         Log.d(TAG, "Populate RecyclerView");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 farmModels.clear();
@@ -106,8 +137,60 @@ public class HomeFragment extends Fragment {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         if (!containsId(mBookedList, dataSnapshot.getKey())) {
                             FarmModel farmModel = dataSnapshot.getValue(FarmModel.class);
-                            farmModels.add(farmModel);
-                            checkRequest(dataSnapshot.getKey());
+                            if (!bundle.isEmpty()) {
+                                if (bundle.containsKey("keyword") && bundle.containsKey("areaMin") && bundle.containsKey("budgetMin")) {
+                                    if (farmModel.getFarmName().equals(bundle.getString("keyword")) &&
+                                            farmModel.getFarmingBudget() >= bundle.getDouble("budgetMin") &&
+                                            farmModel.getFarmingBudget() <= bundle.getDouble("budgetMax") &&
+                                            farmModel.getFarmArea() >= bundle.getDouble("areaMin") &&
+                                            farmModel.getFarmArea() <= bundle.getDouble("areaMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("keyword") && bundle.containsKey("areaMin")) {
+                                    if (farmModel.getFarmName().equals(bundle.getString("keyword")) &&
+                                            farmModel.getFarmArea() >= bundle.getDouble("budgetMin") &&
+                                            farmModel.getFarmArea() <= bundle.getDouble("budgetMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("keyword") && bundle.containsKey("budgetMin")) {
+                                    if (farmModel.getFarmName().equals(bundle.getString("keyword")) &&
+                                            farmModel.getFarmingBudget() >= bundle.getDouble("budgetMin") &&
+                                            farmModel.getFarmingBudget() <= bundle.getDouble("budgetMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("budgetMin") && bundle.containsKey("areaMin")) {
+                                    if (farmModel.getFarmingBudget() >= bundle.getDouble("budgetMin") &&
+                                            farmModel.getFarmingBudget() <= bundle.getDouble("budgetMax") &&
+                                            farmModel.getFarmArea() >= bundle.getDouble("areaMin") &&
+                                            farmModel.getFarmArea() <= bundle.getDouble("areaMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("keyword")) {
+                                    if (farmModel.getFarmName().equals(bundle.getString("keyword"))) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("budgetMin")) {
+                                    if (farmModel.getFarmingBudget() >= bundle.getDouble("budgetMin") &&
+                                            farmModel.getFarmingBudget() <= bundle.getDouble("budgetMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                } else if (bundle.containsKey("areaMin")) {
+                                    if (farmModel.getFarmArea() >= bundle.getDouble("areaMin") &&
+                                            farmModel.getFarmArea() <= bundle.getDouble("areaMax")) {
+                                        farmModels.add(farmModel);
+                                        checkRequest(dataSnapshot.getKey());
+                                    }
+                                }
+                            } else if (bundle.isEmpty()) {
+                                farmModels.add(farmModel);
+                                checkRequest(dataSnapshot.getKey());
+                            }
                         }
                     }
                 } else {
@@ -121,6 +204,72 @@ public class HomeFragment extends Fragment {
             }
 
         });
+    }
+
+    private void checkRequest(String key) {
+        Log.d("FARMLAND", "Check Request");
+        referenceBook.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.hasChildren()) {
+                    mIsBooking.add(false);
+                } else if (snapshot.exists()) {
+                    long i = 0;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        if (dataSnapshot.child("farmerId").getValue().toString().equals(key) &&
+                                dataSnapshot.child("investorId").getValue().toString().equals(user.getUid())) {
+                            mIsBooking.add(true);
+
+                            break;
+                        } else if (i == snapshot.getChildrenCount() - 1) {
+                            mIsBooking.add(false);
+                        }
+                        i++;
+                    }
+                }
+                farmAdapter = new FarmAdapter(getContext(), farmModels, listener, mIsBooking);
+                binding.rvFarmland.setAdapter(farmAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "DatabaseError" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void populateBookedList() {
+        mBookedList.clear();
+        referenceAccepted.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    if (snapshot.hasChildren()) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            mBookedList.add(dataSnapshot.getValue(BookModel.class));
+                        }
+                    }
+                }
+                Log.d(TAG, "onDataChange: " + mBookedList.size());
+                populateRecyclerView();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private boolean containsId(ArrayList<BookModel> mBookedList, String key) {
+        for (int i = 0; i < mBookedList.size(); i++) {
+            Log.d(TAG, "onDataChange: key " + key);
+            Log.d(TAG, "onDataChange: Booklist id" + mBookedList.get(i).getFarmerId());
+            if (mBookedList.get(i).getFarmerId().equals(key) && mBookedList.get(i).getInvestorId().equals(user.getUid())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setOnClickListener() {
@@ -169,70 +318,5 @@ public class HomeFragment extends Fragment {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return month + "-" + day + "-" + year;
-    }
-
-    private void checkRequest(String key) {
-        Log.d("FARMLAND", "Check Request");
-        referenceBook.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (!snapshot.hasChildren()) {
-                    mIsBooking.add(false);
-                } else if (snapshot.exists()) {
-                    long i = 0;
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        if (dataSnapshot.child("farmerId").getValue().toString().equals(key) &&
-                                dataSnapshot.child("investorId").getValue().toString().equals(user.getUid())) {
-                            mIsBooking.add(true);
-
-                            break;
-                        } else if (i == snapshot.getChildrenCount() - 1) {
-                            mIsBooking.add(false);
-                        }
-                        i++;
-                    }
-                }
-                farmAdapter = new FarmAdapter(getContext(), farmModels, listener, mIsBooking);
-                binding.rvFarmland.setAdapter(farmAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "DatabaseError" + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void populateBookedList() {
-        referenceAccepted.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    if (snapshot.hasChildren()) {
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mBookedList.add(dataSnapshot.getValue(BookModel.class));
-                        }
-                    }
-                }
-                Log.d(TAG, "onDataChange: " + mBookedList.size());
-                populateRecyclerView();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private boolean containsId(ArrayList<BookModel> mBookedList, String key) {
-        for (int i = 0; i < mBookedList.size(); i++) {
-            Log.d(TAG, "onDataChange: key " + key);
-            Log.d(TAG, "onDataChange: Booklist id" + mBookedList.get(i).getFarmerId());
-            if (mBookedList.get(i).getFarmerId().equals(key) && mBookedList.get(i).getInvestorId().equals(user.getUid())) {
-                return true;
-            }
-        }
-        return false;
     }
 }

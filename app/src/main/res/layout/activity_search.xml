@@ -23,6 +23,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:enabled="false"
         android:hint="Min"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
@@ -40,7 +41,7 @@
             android:drawablePadding="5dp"
             android:drawableTint="@color/darkbrown"
             android:fontFamily="@font/amaranth"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:textColor="@color/darkbrown"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,6 +53,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:enabled="false"
         android:hint="Max"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
@@ -69,7 +71,7 @@
             android:drawablePadding="5dp"
             android:drawableTint="@color/darkbrown"
             android:fontFamily="@font/amaranth"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:textColor="@color/darkbrown"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +83,7 @@
         android:layout_height="68dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:enabled="false"
         android:hint="Min"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
@@ -99,7 +102,7 @@
             android:drawablePadding="5dp"
             android:drawableTint="@color/darkbrown"
             android:fontFamily="@font/amaranth"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:textColor="@color/darkbrown"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -111,6 +114,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:enabled="false"
         android:hint="Max"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
@@ -129,7 +133,7 @@
             android:drawablePadding="5dp"
             android:drawableTint="@color/darkbrown"
             android:fontFamily="@font/amaranth"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:textColor="@color/darkbrown"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>

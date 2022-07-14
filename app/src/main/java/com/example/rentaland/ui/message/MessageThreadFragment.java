@@ -43,8 +43,9 @@ public class MessageThreadFragment extends Fragment {
     private MessageThreadAdapter mAdapter;
     private MessageThreadAdapter.RecyclerViewClickListener mListener;
 
-    private String mUserTypeRef;
     private String mThreadId;
+    private String mUserTypeRef;
+    private ArrayList<String> threadList;
     private ArrayList<UserModel> mUserList;
     private ArrayList<String> mKeyList;
     private UserModel mCurrentUser;
@@ -60,7 +61,9 @@ public class MessageThreadFragment extends Fragment {
         mFarmerRef = mRootNode.getReference().child("user_farmer");
         mInvestorRef = mRootNode.getReference().child("user_investor");
         mUserList = new ArrayList<>();
+        threadList = new ArrayList<>();
         mKeyList = new ArrayList<>();
+
         return binding.getRoot();
     }
 
@@ -87,15 +90,17 @@ public class MessageThreadFragment extends Fragment {
         mMessageReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mKeyList.clear();
                 mUserList.clear();
                 if (snapshot.exists()) {
                     if (snapshot.hasChildren()) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Log.d(TAG, "onDataChange: " + dataSnapshot.getValue().toString());
+                            Log.d(TAG, "datasnapshot value: " + dataSnapshot.getKey());
                             for (DataSnapshot dataSnapshotDetails : dataSnapshot.getChildren()) {
                                 if (dataSnapshotDetails.getValue().equals(mUser.getUid())) {
+                                    Log.d(TAG, "Thread ID: " + dataSnapshot.getKey());
+                                    threadList.add(dataSnapshot.getKey());
                                     if (dataSnapshotDetails.getKey().equals("investorId")) {
-                                        mThreadId = dataSnapshot.getKey();
                                         mUserTypeRef = "user_investor";
                                         populateUserList("user_farmer", dataSnapshot.child("farmerId").getValue().toString());
                                     } else {
@@ -165,23 +170,15 @@ public class MessageThreadFragment extends Fragment {
                 mRootNode.getReference("message_thread").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        int i = 0;
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            if (i == position) {
-                                MessageThreadModel messages = dataSnapshot.getValue(MessageThreadModel.class);
-                                Log.d(TAG, "onDataChange: " + messages.getMessage().get(1).getSender());
+                            if (true) {
                                 Intent intent = new Intent(getContext(), MessageActivity.class);
                                 intent.putExtra("otherUser", userModel);
                                 intent.putExtra("userId", mKeyList.get(position));
                                 intent.putExtra("currentUser", mCurrentUser);
-                                ArrayList<MessageModel> messageList = new ArrayList<>();
-                                for (int j = 1; j < messages.getMessage().size(); j++) {
-                                    Log.d(TAG, "Messages List: " + messages.getMessage().get(j).getSender());
-                                    messageList.add(messages.getMessage().get(j));
-                                }
+                                intent.putExtra("threadId", threadList.get(position));
                                 startActivity(intent);
                             }
-                            i++;
                         }
                     }
 

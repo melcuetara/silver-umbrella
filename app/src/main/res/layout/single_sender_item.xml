@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_land_title_pic2"
+            android:id="@+id/tv_message_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -25,12 +25,12 @@
             android:textAlignment="center"
             android:textColor="@color/darkbrown"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_date_senderMessage"
+            app:layout_constraintBottom_toTopOf="@+id/tv_date_message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent" />
         <TextView
-            android:id="@+id/tv_date_senderMessage"
+            android:id="@+id/tv_date_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"

@@ -20,7 +20,7 @@
             android:name=".BookingActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".SearchActivity"
             android:exported="false" />
         <activity
             android:name=".ui.signup.UserTypeActivity"
