@@ -1,10 +1,44 @@
 package com.example.rentaland.model;
 
-public class MessageModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MessageModel implements Parcelable {
 
     private String body;
     private String sender;
     private String date;
+
+    public MessageModel() {}
+    protected MessageModel(Parcel in) {
+        body = in.readString();
+        sender = in.readString();
+        date = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(body);
+        dest.writeString(sender);
+        dest.writeString(date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<MessageModel> CREATOR = new Creator<MessageModel>() {
+        @Override
+        public MessageModel createFromParcel(Parcel in) {
+            return new MessageModel(in);
+        }
+
+        @Override
+        public MessageModel[] newArray(int size) {
+            return new MessageModel[size];
+        }
+    };
 
     public String getBody() {
         return body;

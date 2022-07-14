@@ -1,5 +1,6 @@
 package com.example.rentaland.ui.message;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rentaland.databinding.FragmentMessageBinding;
+import com.example.rentaland.model.MessageModel;
 import com.example.rentaland.model.MessageThreadModel;
 import com.example.rentaland.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -168,7 +170,18 @@ public class MessageThreadFragment extends Fragment {
                             if (i == position) {
                                 MessageThreadModel messages = dataSnapshot.getValue(MessageThreadModel.class);
                                 Log.d(TAG, "onDataChange: " + messages.getMessage().get(1).getSender());
+                                Intent intent = new Intent(getContext(), MessageActivity.class);
+                                intent.putExtra("otherUser", userModel);
+                                intent.putExtra("userId", mKeyList.get(position));
+                                intent.putExtra("currentUser", mCurrentUser);
+                                ArrayList<MessageModel> messageList = new ArrayList<>();
+                                for (int j = 1; j < messages.getMessage().size(); j++) {
+                                    Log.d(TAG, "Messages List: " + messages.getMessage().get(j).getSender());
+                                    messageList.add(messages.getMessage().get(j));
+                                }
+                                startActivity(intent);
                             }
+                            i++;
                         }
                     }
 
@@ -177,14 +190,9 @@ public class MessageThreadFragment extends Fragment {
 
                     }
                 });
-//                Log.d(TAG, "Thread ID: " + mThreadId);
-//                Log.d(TAG, "onClick: Clicked" + mKeyList.get(position));
-//                Intent intent = new Intent(getContext(), MessageActivity.class);
-//                intent.putExtra("otherUser", userModel);
-//                intent.putExtra("userId", mKeyList.get(position));
-//                intent.putExtra("currentUser", mCurrentUser);
-//                startActivity(intent);
             }
         };
     }
+
+
 }
