@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentaland">
         <activity
+            android:name=".StartLogoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.message.MessageActivity"
             android:exported="false" />
         <activity
