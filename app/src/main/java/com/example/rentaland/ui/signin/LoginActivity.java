@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
+import com.example.rentaland.SmsGateway;
 import com.example.rentaland.ui.signup.SignUpActivity;
 import com.example.rentaland.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;

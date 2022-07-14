@@ -48,7 +48,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_name_notification"
+            android:id="@+id/tv_user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -77,7 +77,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tv_contact_notification"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name_notification" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
 
         <TextView
             android:id="@+id/tv_date_notification"

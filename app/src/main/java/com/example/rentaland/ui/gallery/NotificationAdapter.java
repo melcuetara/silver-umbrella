@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.BookModel;
-import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
-import com.example.rentaland.ui.slideshow.BookListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -75,7 +73,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(itemView);
 
             mProfileImage = itemView.findViewById(R.id.iv_image_by_noti);
-            mFullName = itemView.findViewById(R.id.tv_name_notification);
+            mFullName = itemView.findViewById(R.id.tv_user_name);
             mAddress = itemView.findViewById(R.id.tv_address_notification);
             mContact = itemView.findViewById(R.id.tv_contact_notification);
             mDate = itemView.findViewById(R.id.tv_date_notification);

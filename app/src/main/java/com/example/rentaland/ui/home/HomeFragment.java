@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.rentaland.R;
 import com.example.rentaland.SearchActivity;
+import com.example.rentaland.SmsGateway;
 import com.example.rentaland.databinding.FragmentHomeBinding;
 import com.example.rentaland.model.BookModel;
 import com.example.rentaland.model.FarmModel;
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment {
     private DatabaseReference referenceAccepted;
     private DatabaseReference reference;
     private DatabaseReference referenceBook;
+    private DatabaseReference referenceUser;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private FarmAdapter farmAdapter;
@@ -71,6 +73,7 @@ public class HomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         rootNode = FirebaseDatabase.getInstance();
+        referenceUser = rootNode.getReference("user_farmer");
         reference = rootNode.getReference().child("farmland");
         referenceBook = rootNode.getReference().child("book_request");
         referenceAccepted = rootNode.getReference().child("book_accepted");
@@ -279,6 +282,7 @@ public class HomeFragment extends Fragment {
                 mBookButton = v.findViewById(R.id.btn_book);
                 if (v.getId() == mBookButton.getId()) {
                     bookFarm(farmModel);
+
                     return;
                 }
             }
@@ -298,6 +302,18 @@ public class HomeFragment extends Fragment {
                             public void onSuccess(Void unused) {
                                 mBookButton.setEnabled(false);
                                 mBookButton.setText("Book Request Sent");
+                                referenceUser.child(dataSnapshot.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        Log.d(TAG, "onDataChange: " + snapshot.child("contactNumber").getValue().toString());
+                                        new SmsGateway().sendSmsFarmer("63" + snapshot.child("contactNumber").getValue().toString());
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
                             }
                         });
                         break;

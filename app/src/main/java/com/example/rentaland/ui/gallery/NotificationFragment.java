@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.rentaland.R;
+import com.example.rentaland.SmsGateway;
 import com.example.rentaland.databinding.FragmentGalleryBinding;
 import com.example.rentaland.model.BookModel;
 import com.example.rentaland.model.MessageModel;
@@ -130,7 +131,6 @@ public class NotificationFragment extends Fragment {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Log.d(TAG, "datasnapshot id: " + dataSnapshot.getKey());
                         if (dataSnapshot.getKey().equals(investorId)) {
-                            Toast.makeText(getContext(), "Found INVESTOR", Toast.LENGTH_SHORT).show();
                             mUserModel = dataSnapshot.getValue(UserModel.class);
                             mUserList.add(mUserModel);
                             break;
@@ -161,12 +161,6 @@ public class NotificationFragment extends Fragment {
                         reference.push().setValue(mBookList.get(adapterPosition));
                         Toast.makeText(getContext(), "Accept", Toast.LENGTH_SHORT).show();
                         referenceBook.child(position).removeValue();
-
-
-                    }
-                    if (v.getId() == btnDecline) {
-                        referenceBook.child(position).removeValue();
-                        Toast.makeText(getContext(), "Decline", Toast.LENGTH_SHORT).show();
                         threadModel.setFarmerId(user.getUid());
                         threadModel.setInvestorId(mBookList.get(adapterPosition).getInvestorId());
                         threadModel.setMessage(new ArrayList<MessageModel>() {
@@ -176,6 +170,13 @@ public class NotificationFragment extends Fragment {
 
                         });
                         referenceThread.push().setValue(threadModel);
+                        new SmsGateway().sendSms(mUserList.get(adapterPosition).getContactNumber(),
+                                "I+have+accepted+your+booking+request");
+
+                    }
+                    if (v.getId() == btnDecline) {
+                        referenceBook.child(position).removeValue();
+                        Toast.makeText(getContext(), "Decline", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     Log.d(TAG, e.getMessage());

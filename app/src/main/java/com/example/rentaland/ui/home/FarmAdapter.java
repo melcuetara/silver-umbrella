@@ -56,6 +56,8 @@ public class FarmAdapter extends RecyclerView.Adapter<FarmAdapter.ViewHolder> {
         if (isBooking.get(position)) {
             holder.btnBook.setText("Book Request Sent");
             holder.btnBook.setEnabled(false);
+        } else {
+            holder.btnBook.setText("Book");
         }
     }
 

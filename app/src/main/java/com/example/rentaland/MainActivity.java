@@ -2,9 +2,11 @@ package com.example.rentaland;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.example.rentaland.ui.home.HomeFragment;
 import com.example.rentaland.ui.signin.LoginActivity;
@@ -23,6 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.rentaland.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.io.IOException;
+
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -30,6 +30,7 @@ import com.google.firebase.storage.UploadTask;
 public class SignUpFarmerActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int PICK_IMAGE_REQUEST_TITLE = 2;
 
     private ActivitySignUpFarmlandBinding binding;
     private FirebaseAuth mAuth;
@@ -38,8 +39,10 @@ public class SignUpFarmerActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private StorageReference storageTitleRef;
     private FirebaseUser mUser;
 
+    private Uri titleImageUrl;
     private Uri imageUri;
     private FarmModel farmModel;
 
@@ -55,12 +58,8 @@ public class SignUpFarmerActivity extends AppCompatActivity {
         reference = database.getReference().child("user_farmer").child(user.getUid());
         storage = FirebaseStorage.getInstance();
 
-        binding.ivFarmImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
-            }
-        });
+        binding.ivFarmImage.setOnClickListener(v -> openFileChooser());
+        binding.ivLandTitle.setOnClickListener(v -> openFileChooser());
 
         binding.btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +95,6 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                farmModel.setFarmImageUrl(uri.toString());
                                 reference.setValue(farmModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {

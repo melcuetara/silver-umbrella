@@ -67,6 +67,7 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         userType = bundle.getString("userType");
 
+        Log.d(TAG, "onCreate: " + userType);
         binding.ivUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,8 +141,9 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                                         if (userType.equals("user_farmer")) {
                                             startSignUpFarmer();
                                             return;
+                                        } else {
+                                            startMain();
                                         }
-                                        startMain();
                                     }
                                 })
                                         .addOnFailureListener(new OnFailureListener() {
