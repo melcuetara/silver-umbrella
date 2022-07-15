@@ -64,7 +64,7 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_users_commission"
+                    android:id="@+id/rv_manage_user"
                     android:layout_width="match_parent"
                     android:layout_height="900dp"
                     android:padding="20dp" />

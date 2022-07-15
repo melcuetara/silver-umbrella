@@ -10,6 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentaland">
         <activity
+            android:name=".ui.government.viewFarmer"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.admin.viewFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.manageUser"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.viewReportAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.registerGovernment"
+            android:exported="false" />
+        <activity
             android:name=".StartLogoActivity"
             android:exported="false" />
         <activity
@@ -29,6 +45,9 @@
             android:name=".ui.signup.UserTypeActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.signin.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.signup.SignUpCredentialsActivity"
             android:exported="false" />
         <activity
@@ -43,11 +62,10 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Rentaland.NoActionBar" />
         <activity
-            android:name=".ui.signin.LoginActivity"
+            android:name=".ui.government.governmentDashboard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

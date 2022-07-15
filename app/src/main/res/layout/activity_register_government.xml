@@ -73,7 +73,7 @@
                         app:cardCornerRadius="73dp">
 
                         <ImageView
-                            android:id="@+id/iv_user_image"
+                            android:id="@+id/iv_user_image_gov"
                             tools:srcCompat="@drawable/ic_baseline_person_24"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -125,7 +125,7 @@
                         app:startIconTint="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_address"
+                            android:id="@+id/et_barangay_name_gov"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_baseline_location_on_24"
@@ -229,7 +229,7 @@
                         app:startIconTint="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_gender"
+                            android:id="@+id/et_gender_gov"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -255,7 +255,7 @@
                         app:startIconTint="@color/darkbrown">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_contact_number"
+                            android:id="@+id/et_contact_number_gov"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_baseline_call_24"

@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.BookModel;
-import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
-import com.example.rentaland.ui.slideshow.BookListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -74,13 +72,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mProfileImage = itemView.findViewById(R.id.iv_image_by_noti);
-            mFullName = itemView.findViewById(R.id.tv_name_notification);
-            mAddress = itemView.findViewById(R.id.tv_address_notification);
-            mContact = itemView.findViewById(R.id.tv_contact_notification);
-            mDate = itemView.findViewById(R.id.tv_date_notification);
+            mProfileImage = itemView.findViewById(R.id.img_profile_single);
+            mFullName = itemView.findViewById(R.id.tv_name_report);
+            mAddress = itemView.findViewById(R.id.tv_address_report);
+            mContact = itemView.findViewById(R.id.tv_contact_report);
+            mDate = itemView.findViewById(R.id.tv_user_type_report);
             mAccept = itemView.findViewById(R.id.btn_accept_notification);
-            mDecline = itemView.findViewById(R.id.btn_decline_notification);
+            mDecline = itemView.findViewById(R.id.btn_delete_manage);
 
             mAccept.setOnClickListener(this);
             mDecline.setOnClickListener(this);

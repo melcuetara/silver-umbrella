@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
-            android:id="@+id/settingBtn"
+            android:id="@+id/logoutGov"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -103,7 +103,7 @@
                         android:padding="10dp">
 
                         <Button
-                            android:id="@+id/btn_view_farmer2"
+                            android:id="@+id/btn_view_report_gov"
                             android:layout_width="0dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
@@ -116,7 +116,7 @@
                             app:layout_constraintBottom_toTopOf="@+id/textView15"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer" />
+                            app:layout_constraintTop_toBottomOf="@+id/btn_registerLocalGov" />
 
                         <TextView
                             android:id="@+id/textView15"
@@ -130,10 +130,10 @@
                             app:layout_constraintBottom_toTopOf="@+id/textView34"
                             app:layout_constraintEnd_toStartOf="@+id/imageView10"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2" />
+                            app:layout_constraintTop_toBottomOf="@+id/btn_view_report_gov" />
 
                         <Button
-                            android:id="@+id/btn_register_farmer"
+                            android:id="@+id/btn_view_farmer_gov"
                             android:layout_width="311dp"
                             android:layout_height="60dp"
                             android:layout_marginTop="15dp"
@@ -148,7 +148,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
                         <Button
-                            android:id="@+id/btn_view_farmer"
+                            android:id="@+id/btn_viewProfileGov"
                             android:layout_width="0dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="15dp"
@@ -158,7 +158,7 @@
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             app:cornerRadius="20dp"
-                            app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer2"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_view_report_gov"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -174,7 +174,7 @@
                             android:textAlignment="center"
                             android:textSize="14sp"
                             android:textStyle="italic"
-                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer_gov"
                             app:layout_constraintEnd_toStartOf="@+id/imageView10"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -184,9 +184,9 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_marginTop="15dp"
-                            app:layout_constraintBottom_toTopOf="@+id/btn_register_farmer"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_view_farmer_gov"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/btn_view_farmer2"
+                            app:layout_constraintTop_toBottomOf="@+id/btn_view_report_gov"
                             app:srcCompat="@drawable/farmer_profile" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
