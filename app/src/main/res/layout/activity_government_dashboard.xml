@@ -11,18 +11,19 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@color/MINIMAL"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/logoutGov"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@color/MINIMAL"
-            android:backgroundTint="@color/MINIMAL"
-            app:srcCompat="@drawable/ic_baseline_logout_24" />
+            android:background="@color/darkbrown"
+            android:backgroundTint="@color/darkbrown"
+            app:srcCompat="@drawable/ic_baseline_logout_24"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+            app:tint="@color/black" />
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,7 +137,6 @@
                             android:layout_width="0dp"
                             android:layout_height="60dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginBottom="10dp"
                             android:backgroundTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
                             android:text="View Farmer"
