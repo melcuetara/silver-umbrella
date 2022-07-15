@@ -77,39 +77,9 @@ public class viewFarmer extends AppCompatActivity {
                         String age = snapshot.child("age").getValue().toString();
                         String gender = snapshot.child("gender").getValue().toString();
                         String imageUrl = snapshot.child("imageUrl").getValue().toString();
-                        reference.child("farmland").orderByKey().equalTo(id).addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                                String farmlandName = snapshot.child("farmName").getValue().toString();
-                                String farmAddress = snapshot.child("farmAddress").getValue().toString();
-                                String farmBudget = snapshot.child("farmingBudget").getValue().toString();
-                                String farmArea = snapshot.child("farmArea").getValue().toString();
-                                String farmlandImage = snapshot.child("value").getValue().toString();
-                                model = new viewFarmerGovModel(name,address,contactNumber,age,gender,farmlandName,farmAddress,farmBudget,farmArea,imageUrl,farmlandImage,id);
-                                list.add(model);
-                                recyclerView.setAdapter(adapter);
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                        model = new viewFarmerGovModel(name,address,contactNumber,age,gender,imageUrl,id);
+                        list.add(model);
+                        recyclerView.setAdapter(adapter);
                     }
 
                     @Override
@@ -157,7 +127,7 @@ public class viewFarmer extends AppCompatActivity {
         adapter = new viewFarmerAdapter(list, new viewFarmerAdapter.itemOnClick() {
             @Override
             public void itemClick(viewFarmerGovModel model) {
-
+                openEditFarmland(model.getUID());
             }
 
             @Override
@@ -167,15 +137,10 @@ public class viewFarmer extends AppCompatActivity {
 
             @Override
             public void itemEditFarmer(viewFarmerGovModel model) {
-
-            }
-
-            @Override
-            public void itemEditFarmland(viewFarmerGovModel model) {
-
+                openEditFarmer(model.getUID());
             }
         });
-    }
+        }
     public void generateID()
     {
         govUser = user.getUid();
@@ -202,6 +167,19 @@ public class viewFarmer extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public void openEditFarmland(String UID)
+    {
+        Intent intent = new Intent(this, editFarmlandGov.class);
+        startActivity(intent);
+    }
+    public void openEditFarmer(String UID)
+    {
+        Bundle bundle = new Bundle();
+        bundle.putString("UID",UID);
+        Intent intent = new Intent(this, editFarmerGov.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
     public void openCredential()
     {

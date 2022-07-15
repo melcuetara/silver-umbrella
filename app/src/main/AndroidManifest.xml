@@ -29,10 +29,17 @@
             android:name=".ui.admin.viewReportAdmin"
             android:exported="false" />
         <activity
-            android:name=".ui.admin.registerGovernment"
+            android:name=".ui.government.editFarmerGov"
             android:exported="false" />
         <activity
+            android:name=".ui.admin.registerGovernment"
+            android:exported="false" />
+
+        <activity
             android:name=".StartLogoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.government.editFarmlandGov"
             android:exported="false" />
         <activity
             android:name=".ui.message.MessageActivity"

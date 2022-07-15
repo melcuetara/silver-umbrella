@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -24,7 +23,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rentaland.R;
 import com.example.rentaland.SearchActivity;
-import com.example.rentaland.SmsGateway;
 import com.example.rentaland.databinding.FragmentHomeBinding;
 import com.example.rentaland.model.BookModel;
 import com.example.rentaland.model.FarmModel;
@@ -39,17 +37,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
 
