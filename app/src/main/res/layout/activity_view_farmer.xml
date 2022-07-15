@@ -72,7 +72,7 @@
                         app:cardCornerRadius="73dp">
 
                         <ImageView
-                            android:id="@+id/iv_user_image"
+                            android:id="@+id/iv_user_image_proflegov"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tv_barangayNameProfilegov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -101,13 +101,13 @@
                     android:textAlignment="center"
                     android:textColor="@color/darkbrown"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_farm_address4"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_personel_nameprofilegov"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_farm_address4"
+                    android:id="@+id/tv_personel_nameprofilegov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -119,14 +119,14 @@
                     android:paddingLeft="15dp"
                     android:textColor="@color/darkbrown"
                     android:textSize="16dp"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_farm_address5"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_contactNum_profilegov"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_barangayNameProfilegov" />
 
                 <TextView
-                    android:id="@+id/tv_farm_address5"
+                    android:id="@+id/tv_contactNum_profilegov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -141,7 +141,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_farm_address4" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_personel_nameprofilegov" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_farm_address7"
+                    android:id="@+id/tv_age_profilegov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -165,10 +165,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_farm_address6" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_gender_profilegov" />
 
                 <TextView
-                    android:id="@+id/tv_farm_address6"
+                    android:id="@+id/tv_gender_profilegov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -180,7 +180,7 @@
                     android:paddingLeft="15dp"
                     android:textColor="@color/darkbrown"
                     android:textSize="16dp"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_farm_address7"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_age_profilegov"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

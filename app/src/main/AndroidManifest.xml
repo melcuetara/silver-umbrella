@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentaland">
         <activity
+            android:name=".ui.government.viewProfileGov"
+            android:exported="false" />
+        <activity
+            android:name=".ui.government.editProfileGov"
+            android:exported="false" />
+        <activity
             android:name=".ui.government.viewFarmer"
             android:exported="false" />
 

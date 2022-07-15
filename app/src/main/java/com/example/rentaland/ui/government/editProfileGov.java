@@ -77,6 +77,7 @@ public class editProfileGov extends AppCompatActivity {
                     saveCredentials();
                 }
             }
+
         });
         etAge.setText("Select Birth Date: " + getTodayDate());
         etAge.setOnClickListener(new View.OnClickListener() {
