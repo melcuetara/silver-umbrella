@@ -1,11 +1,16 @@
 package com.example.rentaland;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.Response;
+
 public class SmsGateway {
+
 
     private final String API_KEY = "f48388598105a1516e489c527b15a94c46252cf3";
     private String message = "Rentaland%3A+someone+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting.";
@@ -23,12 +28,11 @@ public class SmsGateway {
                         + conn.getResponseCode());
             }
 
-//            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-//            String output;
-//            while ((output = br.readLine()) != null) {
-//                ObjectMapper mapper = new ObjectMapper();
-//                newsResponse = mapper.readValue(output, NewsResponse.class);
-//            }
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            String output;
+            while ((output = br.readLine()) != null) {
+                ObjectMapper mapper = new ObjectMapper();
+            }
 
             conn.disconnect();
         } catch (Exception e) {
@@ -36,7 +40,7 @@ public class SmsGateway {
         }
     }
 
-    public void sendSmsFarmer(String sendTo) {
+    public String sendSmsFarmer(String sendTo) {
         String apiCall = "";
         try {
             URL url = new URL("https://sms.teamssprogram.com/api/send?key=" + API_KEY + "&phone=" + sendTo
@@ -59,8 +63,9 @@ public class SmsGateway {
 
             conn.disconnect();
         } catch (Exception e) {
-            e.printStackTrace();
+            return e.getMessage();
         }
+        return "success";
     }
 
 
