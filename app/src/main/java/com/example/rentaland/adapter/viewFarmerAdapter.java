@@ -26,7 +26,7 @@ public class viewFarmerAdapter extends RecyclerView.Adapter<viewFarmerAdapter.My
     @NonNull
     @Override
     public viewFarmerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new viewFarmerAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmer_and_farmland_item,parent,false));
+        return new viewFarmerAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmland,parent,false));
     }
 
     @Override
