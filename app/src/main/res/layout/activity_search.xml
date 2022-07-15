@@ -155,8 +155,9 @@
 
     <Button
         android:id="@+id/btn_filter"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="58dp"
+        android:layout_marginStart="2dp"
         android:layout_weight="1"
         android:backgroundTint="@color/darkbrown"
         android:fontFamily="@font/amaranth"
@@ -166,6 +167,7 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/et_keyword"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
 
     <TextView
@@ -185,7 +187,7 @@
     <EditText
         android:id="@+id/et_keyword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_margin="15dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_input"
