@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
 import com.example.rentaland.SmsGateway;
+import com.example.rentaland.ui.admin.adminDashboard;
+import com.example.rentaland.ui.government.governmentDashboard;
 import com.example.rentaland.ui.signup.SignUpActivity;
 import com.example.rentaland.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,11 +23,18 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
 
     private final String TAG = "LOGIN_ACTIVITY";
 
@@ -36,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference();
         if (currentUser != null) {
             startMain();
         } else {
@@ -63,8 +75,49 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startMain() {
-        Intent intentMain = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intentMain);
+        mReference.child("user_government").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        if (dataSnapshot.getKey().equals(mAuth.getUid())) {
+                            Intent intentMain = new Intent(LoginActivity.this, governmentDashboard.class);
+                            startActivity(intentMain);
+                            finish();
+                            return;
+                        }
+                    }
+                }
+                mReference.child("user_admin").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                                if (dataSnapshot.getKey().equals(mAuth.getUid())) {
+                                    Intent intent = new Intent(LoginActivity.this, adminDashboard.class);
+                                    startActivity(intent);
+                                    finish();
+                                    return;
+                                }
+                            }
+                        }
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                Intent intentMain = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intentMain);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void startSignUp() {

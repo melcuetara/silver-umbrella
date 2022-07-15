@@ -57,7 +57,7 @@
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_sign_up_farmer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_sign_up_farmland.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_sign_up_investor.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_user_type.xml" value="0.1" />
+        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_user_type.xml" value="0.4" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_view_farmer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_view_investor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/activity_view_report.xml" value="0.11302083333333333" />
@@ -77,8 +77,8 @@
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_manage_user.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_message_item.xml" value="0.264" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_notification.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_notification_accept_item.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_notification_item.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_notification_accept_item.xml" value="0.264" />
+        <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_notification_item.xml" value="0.2" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_photo_farmer_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_receiver_item.xml" value="0.264" />
         <entry key="..\:/Users/Mel Allen/Rentaland2/app/src/main/res/layout/single_report.xml" value="0.11302083333333333" />

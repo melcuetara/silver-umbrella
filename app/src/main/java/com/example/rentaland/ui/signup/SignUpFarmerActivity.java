@@ -95,6 +95,7 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
+                                farmModel.setFarmImageUrl(uri.toString());
                                 reference.setValue(farmModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
