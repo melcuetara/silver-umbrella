@@ -35,7 +35,7 @@ public class MessageThreadAdapter extends RecyclerView.Adapter<MessageThreadAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.single_thread_item, parent, false);
+                .inflate(R.layout.single_message_item, parent, false);
         return new ViewHolder(view);
     }
 
