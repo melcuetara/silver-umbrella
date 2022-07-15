@@ -11,20 +11,23 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbars="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_home_filter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_home_filter" />
 
     <Button
         android:id="@+id/btn_home_filter"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/darkbrown"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
         android:text="Filter and Search"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_farmland"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_farmland" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
