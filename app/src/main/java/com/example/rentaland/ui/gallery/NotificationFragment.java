@@ -14,6 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.rentaland.R;
 import com.example.rentaland.SmsGateway;
 import com.example.rentaland.databinding.FragmentGalleryBinding;
@@ -29,6 +35,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONObject;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -170,8 +178,7 @@ public class NotificationFragment extends Fragment {
 
                         });
                         referenceThread.push().setValue(threadModel);
-                        new SmsGateway().sendSms(mUserList.get(adapterPosition).getContactNumber(),
-                                "I+have+accepted+your+booking+request");
+                        sendSms(mUserList.get(adapterPosition).getContactNumber());
 
                     }
                     if (v.getId() == btnDecline) {
@@ -183,6 +190,29 @@ public class NotificationFragment extends Fragment {
                 }
             }
         };
+    }
+
+    public void sendSms(String phone) {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3A+a+farmer+accepted+your+booking+request%2C+start+chatting+in+the+application+now.",
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
     }
 
 }

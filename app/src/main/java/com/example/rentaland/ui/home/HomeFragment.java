@@ -16,6 +16,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.rentaland.R;
 import com.example.rentaland.SearchActivity;
 import com.example.rentaland.SmsGateway;
@@ -30,6 +36,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -306,7 +314,7 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         Log.d(TAG, "onDataChange: " + snapshot.child("contactNumber").getValue().toString());
-                                        new SmsGateway().sendSmsFarmer("63" + snapshot.child("contactNumber").getValue().toString());
+                                        sendSmsFarmer(snapshot.child("contactNumber").getValue().toString());
                                     }
 
                                     @Override
@@ -334,5 +342,28 @@ public class HomeFragment extends Fragment {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         return month + "-" + day + "-" + year;
+    }
+
+    public void sendSmsFarmer(String phone) {
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3an+investor+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting",
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
     }
 }
