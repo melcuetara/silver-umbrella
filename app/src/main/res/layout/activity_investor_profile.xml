@@ -7,7 +7,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +25,6 @@
 
                 <ImageButton
                     android:id="@+id/btn_backss"
-                    tools:ignore="SpeakableTextPresentCheck"
                     android:layout_width="60dp"
                     android:layout_height="48dp"
                     android:layout_alignParentTop="true"
@@ -31,7 +34,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/darkbrown" />
+                    app:tint="@color/darkbrown"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/tv_heading5"
@@ -73,14 +77,14 @@
 
                         <ImageView
                             android:id="@+id/iv_user_image_proflegov"
-                            tools:srcCompat="@drawable/ic_baseline_person_24"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerCrop"
                             android:src="@mipmap/ic_launcher_round"
-                            app:srcCompat="@drawable/ic_baseline_person_24" />
+                            app:srcCompat="@drawable/ic_baseline_person_24"
+                            tools:srcCompat="@drawable/ic_baseline_person_24" />
                     </androidx.cardview.widget.CardView>
 
                 </androidx.cardview.widget.CardView>
@@ -209,6 +213,7 @@
     </ScrollView>
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
