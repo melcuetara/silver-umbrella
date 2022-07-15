@@ -73,12 +73,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(itemView);
 
             mProfileImage = itemView.findViewById(R.id.iv_image_by_noti);
-            mFullName = itemView.findViewById(R.id.tv_user_name);
-            mAddress = itemView.findViewById(R.id.tv_address_notification);
-            mContact = itemView.findViewById(R.id.tv_contact_notification);
-            mDate = itemView.findViewById(R.id.tv_date_notification);
+            mFullName = itemView.findViewById(R.id.tv_name_report);
+            mAddress = itemView.findViewById(R.id.tv_contact_report);
+            mContact = itemView.findViewById(R.id.tv_contact_manage);
+            mDate = itemView.findViewById(R.id.tv_user_type_manage);
             mAccept = itemView.findViewById(R.id.btn_accept_notification);
-            mDecline = itemView.findViewById(R.id.btn_decline_notification);
+            mDecline = itemView.findViewById(R.id.btn_delete_manage);
 
             mAccept.setOnClickListener(this);
             mDecline.setOnClickListener(this);

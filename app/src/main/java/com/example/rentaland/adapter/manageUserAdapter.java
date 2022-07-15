@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rentaland.R;
 import com.example.rentaland.model.manageUserModel;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class manageUserAdapter extends RecyclerView.Adapter<manageUserAdapter.MyViewHolder> {
@@ -65,12 +63,11 @@ public class manageUserAdapter extends RecyclerView.Adapter<manageUserAdapter.My
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            tvName = (TextView) itemView.findViewById(R.id.tv_name_manage);
-            tvAddress = (TextView) itemView.findViewById(R.id.tv_address_manage);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_report);
+            tvAddress = (TextView) itemView.findViewById(R.id.tv_contact_report);
             tvContactNum = (TextView) itemView.findViewById(R.id.tv_contact_manage);
             tvUserType =(TextView) itemView.findViewById(R.id.tv_user_type_manage);
             deleteBtn = (Button) itemView.findViewById(R.id.btn_delete_manage);
-
         }
     }
 }

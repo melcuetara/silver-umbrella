@@ -31,10 +31,10 @@
             android:text="Click to create message..."
             android:textColor="#4CAF50"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/btn_decline_notification"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete_manage"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_report" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/iv_profile_by_noti"
@@ -65,7 +65,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_user_name"
+            android:id="@+id/tv_name_report"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -79,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_decline_notification"
+            android:id="@+id/btn_delete_manage"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:backgroundTint="#DC5D5D"

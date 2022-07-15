@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
-import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
-import com.example.rentaland.ui.home.FarmAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,7 +56,7 @@ public class MessageThreadAdapter extends RecyclerView.Adapter<MessageThreadAdap
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userImage = itemView.findViewById(R.id.iv_thread_image);
-            name = itemView.findViewById(R.id.tv_user_name);
+            name = itemView.findViewById(R.id.tv_name_report);
             itemView.setOnClickListener(this);
         }
 

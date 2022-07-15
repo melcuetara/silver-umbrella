@@ -35,7 +35,7 @@ public class governmentDashboard extends AppCompatActivity {
         viewProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openProfile();
             }
         });
         viewFarmerBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +54,11 @@ public class governmentDashboard extends AppCompatActivity {
     public void openViewFarmer()
     {
         Intent intent = new Intent(this,viewFarmer.class);
+        startActivity(intent);
+    }
+    public void openProfile()
+    {
+        Intent intent = new Intent(this,viewProfileGov.class);
         startActivity(intent);
     }
 }
