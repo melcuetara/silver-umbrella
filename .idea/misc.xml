@@ -9,6 +9,7 @@
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_booking.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_edit_farmer.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_edit_farmland.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_edit_investor.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_edit_profile_government.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/activity_farmer_profile.xml" value="0.25" />
@@ -50,6 +51,7 @@
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/nav_header_main.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/singel_sender.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/single.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/single_farmer.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/single_farmer_and_farmland_item.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/single_farmland_item.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/Desktop/Rentaland/silver-umbrella/app/src/main/res/layout/single_manage_feedback.xml" value="0.25" />
