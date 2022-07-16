@@ -274,11 +274,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/darkbrown"
+                android:backgroundTint="@color/GREEN"
                 android:fontFamily="@font/amaranth"
-                android:text="Create"
+                android:text="edit"
                 android:textSize="12sp"
                 app:cornerRadius="10dp" />
+
             <Button
                 android:id="@+id/btn_delete_farmland"
                 android:layout_width="match_parent"
@@ -288,12 +289,13 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/darkbrown"
-                android:fontFamily="@font/amaranth"
-                android:visibility="invisible"
+                android:backgroundTint="#EA766E"
                 android:enabled="false"
+                android:fontFamily="@font/amaranth"
                 android:text="Delete"
+                android:textColor="@color/white"
                 android:textSize="12sp"
+                android:visibility="visible"
                 app:cornerRadius="10dp" />
 
         </LinearLayout>
