@@ -140,14 +140,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == binding.btnProfileFarm.getId()) {
             Toast.makeText(getContext(), "This", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getContext(), SignUpCredentialsActivity.class);
+            Intent intent = new Intent(getContext(), SignUpFarmerActivity.class);
             startActivity(intent);
             return;
         }
         if (v.getId() == binding.btnProfileEdit.getId()) {
             Intent intent = new Intent(getContext(), SignUpCredentialsActivity.class);
             startActivity(intent);
-            return;
         }
     }
 

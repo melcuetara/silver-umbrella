@@ -16,7 +16,6 @@ public class UserModel implements Parcelable {
     public UserModel() {
     }
 
-    ;
 
     public UserModel(String firstName, String lastName, int age, String gender, String contactNumber, String address) {
         this.firstName = firstName;
