@@ -194,7 +194,7 @@
                 android:layout_height="55dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="#EF756C"
+                android:backgroundTint="#EDB35E"
                 android:text="view book"
                 android:textSize="12sp"
                 app:cornerRadius="10dp"
