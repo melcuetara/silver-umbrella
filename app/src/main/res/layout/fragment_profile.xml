@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="1dp"
-                android:background="@color/MINIMAL"
+                android:background="@color/white"
                 android:padding="20dp">
 
                 <androidx.cardview.widget.CardView
@@ -59,7 +59,7 @@
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/amaranth"
                     android:text="Name"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkbrown"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/tv_profile_address"
@@ -76,7 +76,7 @@
                     android:fontFamily="@font/amaranth"
                     android:paddingLeft="15dp"
                     android:text="Address"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkbrown"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/tv_profile_contact"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
                     android:fontFamily="@font/amaranth"
                     android:paddingLeft="15dp"
                     android:text="Contact No."
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkbrown"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
@@ -107,7 +107,7 @@
                     android:fontFamily="@font/amaranth"
                     android:paddingLeft="15dp"
                     android:text="Age"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkbrown"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
@@ -123,7 +123,7 @@
                     android:fontFamily="@font/amaranth"
                     android:paddingLeft="15dp"
                     android:text="Gender:"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkbrown"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -149,13 +149,30 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_profile_farmland"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:padding="20dp">
 
-            <Button
-                android:id="@+id/btn_profile_farm"
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Farmland" />
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btn_profile_farm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/darkbrown"
+                    android:gravity="center"
+                    android:text="Add Farmland"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.544"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

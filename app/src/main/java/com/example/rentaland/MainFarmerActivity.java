@@ -63,10 +63,7 @@ public class MainFarmerActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_farmer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
