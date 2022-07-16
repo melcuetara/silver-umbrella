@@ -246,26 +246,12 @@
                                     app:layout_constraintTop_toBottomOf="@+id/textView6"
                                     app:layout_constraintVertical_bias="0.506" />
 
-                                <CheckBox
-                                    android:id="@+id/cb_agree"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/amaranth"
-                                    android:text="I Accept Terms and Conditions"
-                                    android:textColor="@color/darkbrown"
-                                    android:textSize="14sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
                                 <TextView
                                     android:id="@+id/textView7"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/amaranth"
                                     android:hint="We are committed to protecting your privacy. Authorized within the business on a need to know basis only use any information collected from individual customers. We constantly review our systems and data to ensure the best possible service to our customers. Parliament has created specific offenses for unauthorized actions against computer systems and data. We will investigate any such actions to prosecute and/or taking civil proceedings to recover damages against those responsible."
-                                    app:layout_constraintBottom_toTopOf="@+id/cb_agree"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -284,6 +270,7 @@
                                     app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </LinearLayout>
@@ -291,6 +278,16 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <CheckBox
+                android:id="@+id/cb_agree"
+                android:layout_width="341dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/amaranth"
+                android:text="I Accept Terms and Conditions"
+                android:textColor="@color/darkbrown"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_submit"

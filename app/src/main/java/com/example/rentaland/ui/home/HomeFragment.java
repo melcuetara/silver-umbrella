@@ -26,6 +26,7 @@ import com.example.rentaland.SearchActivity;
 import com.example.rentaland.databinding.FragmentHomeBinding;
 import com.example.rentaland.model.BookModel;
 import com.example.rentaland.model.FarmModel;
+import com.example.rentaland.model.UserModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -57,6 +58,7 @@ public class HomeFragment extends Fragment {
 
     private Button mBookButton;
     private BookModel mBook;
+    private UserModel mInvestorUser;
     private ArrayList<Boolean> mIsBooking = new ArrayList<>();
     private ArrayList<FarmModel> farmModels = new ArrayList<>();
     private ArrayList<BookModel> mBookedList = new ArrayList<>();
@@ -74,6 +76,7 @@ public class HomeFragment extends Fragment {
         reference = rootNode.getReference().child("farmland");
         referenceBook = rootNode.getReference().child("book_request");
         referenceAccepted = rootNode.getReference().child("book_accepted");
+        mInvestorUser = new UserModel();
         bundle = new Bundle();
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -99,8 +102,29 @@ public class HomeFragment extends Fragment {
                 LinearLayoutManager.HORIZONTAL,
                 false);
         binding.rvFarmland.setLayoutManager(HorizontalLayout);
-        populateBookedList();
+        populateUser();
         setOnClickListener();
+    }
+
+    private void populateUser() {
+        rootNode.getReference("user_investor").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "USER: " + snapshot.hasChild(user.getUid()));
+                Log.d(TAG, "onDataChange: " + user.getUid());
+                Log.d(TAG, "onDataChange: " + snapshot.getValue().toString());
+                if (snapshot.hasChild(user.getUid())) {
+                    mInvestorUser = snapshot.child(user.getUid()).getValue(UserModel.class);
+                    Log.d(TAG, "Contact: " + mInvestorUser.getContactNumber());
+                }
+                populateBookedList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -279,7 +303,7 @@ public class HomeFragment extends Fragment {
                 mBookButton = v.findViewById(R.id.btn_book);
                 if (v.getId() == mBookButton.getId()) {
                     bookFarm(farmModel);
-
+                    sendSmsFarmer("639297784682");
                     return;
                 }
             }
@@ -303,7 +327,7 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         Log.d(TAG, "onDataChange: " + snapshot.child("contactNumber").getValue().toString());
-                                        sendSmsFarmer(snapshot.child("contactNumber").getValue().toString());
+
                                     }
 
                                     @Override
@@ -338,7 +362,7 @@ public class HomeFragment extends Fragment {
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3an+investor+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting",
+                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3Investor+"+ mInvestorUser.getLastName()+"+"+mInvestorUser.getFirstName()+"+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting.%0D%0APhone%3A+"+mInvestorUser.getContactNumber(),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

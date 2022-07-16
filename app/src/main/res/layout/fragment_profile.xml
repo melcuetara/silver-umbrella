@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:background="@color/MINIMAL"
+                android:padding="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/iv_profile_by_noti"
+                    android:layout_width="88dp"
+                    android:layout_height="90dp"
+                    android:layout_alignParentEnd="true"
+                    app:cardBackgroundColor="@android:color/darker_gray"
+                    app:cardCornerRadius="45dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/iv_pic_by_noti"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_baseline_person_24" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_profile_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_profile_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_profile_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:paddingLeft="15dp"
+                    android:text="Address"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_profile_contact"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_name" />
+
+                <TextView
+                    android:id="@+id/tv_profile_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:paddingLeft="15dp"
+                    android:text="Contact No."
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_address" />
+
+                <TextView
+                    android:id="@+id/tv_profile_age"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:paddingLeft="15dp"
+                    android:text="Age"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_contact" />
+
+                <TextView
+                    android:id="@+id/tv_profile_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/amaranth"
+                    android:paddingLeft="15dp"
+                    android:text="Gender:"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_age" />
+
+                <Button
+                    android:id="@+id/btn_profile_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/darkbrown"
+                    android:fontFamily="@font/amaranth"
+                    android:text="Edit"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_profile_by_noti" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_profile_farmland"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_profile_farm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Farmland" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
+import com.example.rentaland.MainFarmerActivity;
 import com.example.rentaland.databinding.ActivitySignUpFarmlandBinding;
 import com.example.rentaland.model.FarmModel;
 import com.example.rentaland.model.UserModel;
@@ -58,8 +59,8 @@ public class SignUpFarmerActivity extends AppCompatActivity {
         reference = database.getReference().child("user_farmer").child(user.getUid());
         storage = FirebaseStorage.getInstance();
 
-        binding.ivFarmImage.setOnClickListener(v -> openFileChooser());
-        binding.ivLandTitle.setOnClickListener(v -> openFileChooser());
+        binding.ivFarmImage.setOnClickListener(v -> openFileChooser(PICK_IMAGE_REQUEST));
+        binding.ivLandTitle.setOnClickListener(v -> openFileChooser(PICK_IMAGE_REQUEST_TITLE));
 
         binding.btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,7 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                         hasEmptyField(binding.etFarmBudget, binding.etFarmBudgetLayout)) {
                     return;
                 }
-                if (imageUri == null) {
+                if (imageUri == null || titleImageUrl == null) {
                     Toast.makeText(SignUpFarmerActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -78,33 +79,44 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                 String farmName = binding.etFarmName.getText().toString().trim();
                 double farmArea = Double.parseDouble(binding.etFarmArea.getText().toString().trim());
                 double farmingBudget = Double.parseDouble(binding.etFarmBudget.getText().toString().trim());
-                farmModel = new FarmModel(farmAddress, farmArea, farmName, farmingBudget);
-                saveCredentials(farmModel, mUser.getUid());
+                farmModel = new FarmModel(farmAddress, farmArea, farmName, farmingBudget, user.getUid());
+                saveCredentials(farmModel);
             }
         });
     }
 
-    private void saveCredentials(FarmModel farmModel, String userId) {
-        storageRef = storage.getReference("Farm Images").child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-        reference = database.getReference().child("farmland").child(userId);
+    private void saveCredentials(FarmModel farmModel) {
+        String key = database.getReference().push().getKey();
+        storageRef = storage.getReference("Farm Images").child(key).child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+        reference = database.getReference().child("farmland").child(key);
         storageRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(SignUpFarmerActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
                         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                reference.setValue(farmModel).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        startMain();
-                                    }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
+                                farmModel.setFarmImageUrl(uri.toString());
+                                storageTitleRef = storage.getReference("Farm Title Images")
+                                        .child(key).child(System.currentTimeMillis() + "." + getFileExtension(titleImageUrl));
+                                storageTitleRef.putFile(titleImageUrl)
+                                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                             @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(SignUpFarmerActivity.this, "Database Input Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                Toast.makeText(SignUpFarmerActivity.this, "Upload Success!", Toast.LENGTH_SHORT).show();
+                                                storageTitleRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                    @Override
+                                                    public void onSuccess(Uri uri) {
+                                                        farmModel.setFarmTitleImageUrl(uri.toString());
+                                                        reference.setValue(farmModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void unused) {
+                                                                startMainFarmer();
+                                                                finish();
+                                                            }
+                                                        });
+                                                    }
+                                                });
                                             }
                                         });
                             }
@@ -121,11 +133,11 @@ public class SignUpFarmerActivity extends AppCompatActivity {
 
     }
 
-    private void openFileChooser() {
+    private void openFileChooser(int requestCode) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, requestCode);
     }
 
     @Override
@@ -136,6 +148,10 @@ public class SignUpFarmerActivity extends AppCompatActivity {
             imageUri = data.getData();
             binding.ivFarmImage.setImageURI(imageUri);
         }
+        if (requestCode == PICK_IMAGE_REQUEST_TITLE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            titleImageUrl = data.getData();
+            binding.ivLandTitle.setImageURI(titleImageUrl);
+        }
     }
 
     private String getFileExtension(Uri uri) {
@@ -144,8 +160,8 @@ public class SignUpFarmerActivity extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    private void startMain() {
-        Intent intentMain = new Intent(SignUpFarmerActivity.this, MainActivity.class);
+    private void startMainFarmer() {
+        Intent intentMain = new Intent(SignUpFarmerActivity.this, MainFarmerActivity.class);
         startActivity(intentMain);
     }
 
