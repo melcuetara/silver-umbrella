@@ -26,20 +26,13 @@ public class viewFarmerAdapter extends RecyclerView.Adapter<viewFarmerAdapter.My
     @NonNull
     @Override
     public viewFarmerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new viewFarmerAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmer_and_farmland_item,parent,false));
+        return new viewFarmerAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmer,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewFarmerAdapter.MyViewHolder holder, int position) {
         holder.tvName.setText(list.get(position).getName());
-        holder.tvBudget.setText(list.get(position).getFarmBudget());
         holder.tvAddress.setText(list.get(position).getAddress());
-        holder.tvAge.setText(list.get(position).getAge());
-        holder.tvGender.setText(list.get(position).getGender());
-        holder.tvFarmName.setText(list.get(position).getFarmlandName());
-        holder.tvfarmAddress.setText(list.get(position).getFarmlandAddress());
-        holder.tvBudget.setText(list.get(position).getFarmBudget());
-        holder.tvArea.setText(list.get(position).getFarmArea());
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,10 +45,10 @@ public class viewFarmerAdapter extends RecyclerView.Adapter<viewFarmerAdapter.My
                 listener.itemEditFarmer(list.get(position));
             }
         });
-        holder.editFarmland.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.itemEditFarmland(list.get(position));
+                listener.itemClick(list.get(position));
             }
         });
     }
@@ -63,7 +56,6 @@ public class viewFarmerAdapter extends RecyclerView.Adapter<viewFarmerAdapter.My
         void itemClick(viewFarmerGovModel model);
         void itemDelete(viewFarmerGovModel model);
         void itemEditFarmer(viewFarmerGovModel model);
-        void itemEditFarmland(viewFarmerGovModel model);
     }
     @Override
     public int getItemCount() {
@@ -71,26 +63,16 @@ public class viewFarmerAdapter extends RecyclerView.Adapter<viewFarmerAdapter.My
     }
     static class MyViewHolder extends RecyclerView.ViewHolder
     {
-        TextView tvName,tvAddress,tvContact,tvAge,tvGender,tvFarmName,tvfarmAddress,tvBudget,tvArea;
-        ImageView profile,farmlandImg;
-        Button editFarmer,editFarmland,deleteBtn;
+        TextView tvName,tvAddress,tvContact;
+        Button editFarmer,deleteBtn;
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            tvArea = (TextView) itemView.findViewById(R.id.tv_farmlandArea__single);
-            tvName = (TextView) itemView.findViewById(R.id.tv_name_single);
-            tvAddress=(TextView) itemView.findViewById(R.id.tv_profile_address);
-            tvContact=(TextView) itemView.findViewById(R.id.tv_profile_contact);
-            tvAge=(TextView) itemView.findViewById(R.id.tv_profile_age);
-            tvGender=(TextView) itemView.findViewById(R.id.tv_profile_gender);
-            tvFarmName=(TextView) itemView.findViewById(R.id.tv_farmlandName_single);
-            tvfarmAddress=(TextView) itemView.findViewById(R.id.tv_farmlandAddress_single);
-            tvBudget = (TextView) itemView.findViewById(R.id.tv_farmlandBudget_single);
-            editFarmer = (Button) itemView.findViewById(R.id.btn_profile_edit);
-            editFarmland = (Button) itemView.findViewById(R.id.btn_editFarmland_single);
-            profile = (ImageView) itemView.findViewById(R.id.img_profile_single);
-            farmlandImg = (ImageView) itemView.findViewById(R.id.img_farmland_single);
-            deleteBtn = (Button) itemView.findViewById(R.id.btn_delete_single);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_farmer);
+            tvAddress = (TextView) itemView.findViewById(R.id.tv_address_farmer);
+            tvContact = (TextView) itemView.findViewById(R.id.tv_contact_farmer);
+            editFarmer = (Button) itemView.findViewById(R.id.btn_edit_farmer);
+            deleteBtn = (Button) itemView.findViewById(R.id.btn_delete_manage);
         }
     }
 }
