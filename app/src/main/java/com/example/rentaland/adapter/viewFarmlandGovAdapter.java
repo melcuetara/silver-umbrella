@@ -28,7 +28,7 @@ public class viewFarmlandGovAdapter extends RecyclerView.Adapter<viewFarmlandGov
     @NonNull
     @Override
     public viewFarmlandGovAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new viewFarmlandGovAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmland_item,parent,false));
+        return new viewFarmlandGovAdapter.MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_farmland,parent,false));
     }
 
     @Override
@@ -37,7 +37,7 @@ public class viewFarmlandGovAdapter extends RecyclerView.Adapter<viewFarmlandGov
         holder.tvFarmlandBudget.setText(list.get(position).getFarmlandBudget());
         holder.tvFarmlandName.setText(list.get(position).getFarmlandName());
         holder.tvAddress.setText(list.get(position).getAddress());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 listener.itemEditFarmland(list.get(position));
@@ -47,7 +47,7 @@ public class viewFarmlandGovAdapter extends RecyclerView.Adapter<viewFarmlandGov
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.itemEditFarmland(list.get(position));
+                listener.itemDelete(list.get(position));
             }
         });
     }
@@ -64,7 +64,7 @@ public class viewFarmlandGovAdapter extends RecyclerView.Adapter<viewFarmlandGov
     {
         TextView tvFarmlandName,tvFarmlandBudget,tvFarmlandSize,tvAddress;
         ImageView imageView;
-        Button deleteBtn;
+        Button deleteBtn,editBtn;
         public MyViewHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -74,6 +74,7 @@ public class viewFarmlandGovAdapter extends RecyclerView.Adapter<viewFarmlandGov
             tvFarmlandSize = (TextView) itemView.findViewById(R.id.tv_farmlandArea__single);
             imageView = (ImageView) itemView.findViewById(R.id.img_farmland_single);
             deleteBtn = (Button) itemView.findViewById(R.id.btn_delete_single);
+            editBtn = (Button) itemView.findViewById(R.id.btn_editFarmland_single);
         }
     }
 }
