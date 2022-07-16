@@ -26,11 +26,16 @@
 
                 <Button
                     android:id="@+id/btn_home_filter"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
-                    android:backgroundTint="@color/darkbrown"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/ic_baseline_search_24"
+                    android:drawableTint="@color/darkbrown"
+                    android:shadowColor="@color/darkbrown"
                     android:text="Filter and Search"
+                    android:textColor="@color/darkbrown"
                     android:textSize="12sp"
                     app:cornerRadius="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"

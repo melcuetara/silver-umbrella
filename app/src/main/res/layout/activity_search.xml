@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/WHITE"
     android:padding="20dp">
 
@@ -11,7 +11,6 @@
         android:id="@+id/cb_budget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/et_budget_max_layout"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3" />
@@ -82,14 +81,12 @@
         android:layout_width="0dp"
         android:layout_height="68dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:enabled="false"
         android:hint="Min"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
         app:errorEnabled="true"
         app:hintTextColor="@color/darkbrown"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/et_budget_max_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3"
@@ -112,15 +109,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="68dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:enabled="false"
         android:hint="Max"
         app:boxStrokeColor="@color/darkbrown"
         app:endIconTint="@color/darkbrown"
         app:errorEnabled="true"
         app:hintTextColor="@color/darkbrown"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cb_budget"
         app:layout_constraintStart_toEndOf="@+id/et_budget_min_layout"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_notification3"
@@ -156,8 +150,9 @@
     <Button
         android:id="@+id/btn_filter"
         android:layout_width="wrap_content"
-        android:layout_height="58dp"
+        android:layout_height="55dp"
         android:layout_marginStart="2dp"
+        android:layout_marginTop="6dp"
         android:layout_weight="1"
         android:backgroundTint="@color/darkbrown"
         android:fontFamily="@font/amaranth"
@@ -168,7 +163,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/et_keyword"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_name_notification4"
@@ -188,7 +183,8 @@
         android:id="@+id/et_keyword"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_margin="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/custom_input"
         android:drawableLeft="@android:drawable/ic_menu_search"
@@ -202,7 +198,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toStartOf="@+id/btn_filter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <CheckBox
