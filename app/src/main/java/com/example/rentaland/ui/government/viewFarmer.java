@@ -53,7 +53,7 @@ public class viewFarmer extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
-        addFarmerBtn = (ImageButton) findViewById(R.id.logoutGov);
+        addFarmerBtn = (ImageButton) findViewById(R.id.btn_addFarmlandBtn);
         addFarmerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,6 +170,9 @@ public class viewFarmer extends AppCompatActivity {
     public void openEditFarmland(String UID)
     {
         Intent intent = new Intent(this, viewFarmlandGov.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("UID",UID);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
     public void openEditFarmer(String UID)

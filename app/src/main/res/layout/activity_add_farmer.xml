@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
-            android:id="@+id/logoutGov"
+            android:id="@+id/btn_addFarmlandBtn"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@color/MINIMAL"

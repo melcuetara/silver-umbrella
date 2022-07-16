@@ -21,7 +21,7 @@ public class adminDashboard extends AppCompatActivity {
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-        logoutbtn = (ImageButton) findViewById(R.id.logoutGov);
+        logoutbtn = (ImageButton) findViewById(R.id.btn_addFarmlandBtn);
         registerGovBtn = (Button) findViewById(R.id.btn_registerLocalGov);
         viewReportBtn = (Button) findViewById(R.id.btn_view_reportAdmin);
         ManageUserBtn = (Button) findViewById(R.id.btn_manage_farmerAdmin);

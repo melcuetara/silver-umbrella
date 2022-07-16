@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +24,7 @@ public class governmentDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_government_dashboard);
         viewFarmerBtn = (Button) findViewById(R.id.btn_view_farmer_gov);
         viewProfileBtn =(Button)findViewById(R.id.btn_viewProfileGov);
-        logoutBtn = (ImageButton) findViewById(R.id.logoutGov);
+        logoutBtn = (ImageButton) findViewById(R.id.btn_addFarmlandBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
