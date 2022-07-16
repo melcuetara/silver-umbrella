@@ -57,9 +57,7 @@
         <activity
             android:name=".ui.signup.UserTypeActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.signin.LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.signup.SignUpCredentialsActivity"
             android:exported="false" />
@@ -76,6 +74,13 @@
             android:theme="@style/Theme.Rentaland.NoActionBar" />
         <activity
             android:name=".ui.government.governmentDashboard"
+            android:exported="true" />
+        <activity
+            android:name=".MainFarmerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Rentaland.NoActionBar" />
+        <activity
+            android:name=".ui.signin.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

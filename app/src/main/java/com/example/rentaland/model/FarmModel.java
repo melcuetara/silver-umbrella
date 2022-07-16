@@ -1,8 +1,13 @@
 package com.example.rentaland.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.Exclude;
 
-public class FarmModel {
+import java.io.Serializable;
+
+public class FarmModel implements Serializable, Parcelable {
 
     private String farmAddress;
     private double farmArea;
@@ -11,6 +16,33 @@ public class FarmModel {
     private double farmingBudget;
     private String farmerId;
     private String farmTitleImageUrl;
+
+    protected FarmModel(Parcel in) {
+        farmAddress = in.readString();
+        farmArea = in.readDouble();
+        farmName = in.readString();
+        farmImageUrl = in.readString();
+        farmingBudget = in.readDouble();
+        farmerId = in.readString();
+        farmTitleImageUrl = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<FarmModel> CREATOR = new Creator<FarmModel>() {
+        @Override
+        public FarmModel createFromParcel(Parcel in) {
+            return new FarmModel(in);
+        }
+
+        @Override
+        public FarmModel[] newArray(int size) {
+            return new FarmModel[size];
+        }
+    };
 
     public String getFarmTitleImageUrl() {
         return farmTitleImageUrl;
@@ -90,5 +122,18 @@ public class FarmModel {
     @Exclude
     public String getValue() {
         return getFarmAddress() + getFarmName() + getFarmImageUrl() + getFarmArea() + getFarmArea();
+    }
+
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(farmAddress);
+        dest.writeDouble(farmArea);
+        dest.writeString(farmName);
+        dest.writeString(farmImageUrl);
+        dest.writeDouble(farmingBudget);
+        dest.writeString(farmerId);
+        dest.writeString(farmTitleImageUrl);
     }
 }

@@ -37,6 +37,7 @@ public class MainFarmerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainFarmerBinding.inflate(getLayoutInflater());
+        mAuth = FirebaseAuth.getInstance();
 
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMainFarmer.toolbarFarmer);

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.FarmModel;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.ArrayList;
@@ -24,10 +25,11 @@ public class FarmlandAdapter extends RecyclerView.Adapter<FarmlandAdapter.ViewHo
     private Context mContext;
     private RecyclerViewClickListener mListener;
 
-    public FarmlandAdapter (Context context, ArrayList<FarmModel> farms, ArrayList<String> farmKeys) {
+    public FarmlandAdapter (Context context, ArrayList<FarmModel> farms, ArrayList<String> farmKeys, RecyclerViewClickListener listener) {
         mContext = context;
         mFarms = farms;
         mFarmKeys = farmKeys;
+        mListener = listener;
     }
 
     @NonNull
@@ -40,7 +42,14 @@ public class FarmlandAdapter extends RecyclerView.Adapter<FarmlandAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull FarmlandAdapter.ViewHolder holder, int position) {
-
+        String farmArea = "" + mFarms.get(position).getFarmArea();
+        String farmBudget = "" + mFarms.get(position).getFarmingBudget();
+        holder.farmName.setText(mFarms.get(position).getFarmName());
+        holder.farmAddress.setText(mFarms.get(position).getFarmAddress());
+        holder.farmArea.setText(farmArea);
+        holder.farmBudget.setText(farmBudget);
+        Picasso.get().load(mFarms.get(position).getFarmImageUrl()).into(holder.farmImage);
+        holder.btnBook.setText("Edit Farmland");
     }
 
 

@@ -197,7 +197,7 @@ public class NotificationFragment extends Fragment {
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3A+a+farmer+accepted+your+booking+request%2C+start+chatting+in+the+application+now.",
+                "https://sms.teamssprogram.com/api/send?key=3c9d7f0e9cecb23c4504d3a031a228125e1d8251&phone=" + phone + "&message=Rentaland%3A+a+farmer+accepted+your+booking+request%2C+start+chatting+in+the+application+now.",
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

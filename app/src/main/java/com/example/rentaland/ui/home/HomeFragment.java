@@ -81,7 +81,13 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        binding.rvFarmland.setLayoutManager(new LinearLayoutManager(getContext()));
+        HorizontalLayout
+                = new LinearLayoutManager(
+                getContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false);
+        binding.rvFarmland.setLayoutManager(HorizontalLayout);
         return root;
     }
 
@@ -95,13 +101,6 @@ public class HomeFragment extends Fragment {
                 startActivityForResult(intent, 1);
             }
         });
-        binding.rvFarmland.setLayoutManager(new LinearLayoutManager(getContext()));
-        HorizontalLayout
-                = new LinearLayoutManager(
-                getContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false);
-        binding.rvFarmland.setLayoutManager(HorizontalLayout);
         populateUser();
         setOnClickListener();
     }
@@ -159,7 +158,8 @@ public class HomeFragment extends Fragment {
                 farmModels.clear();
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        if (!containsId(mBookedList, dataSnapshot.getKey())) {
+                        if (!containsId(mBookedList, dataSnapshot.child("farmerId").getValue().toString())) {
+                            Log.d(TAG, "FARMMODEL: " + dataSnapshot.getValue());
                             FarmModel farmModel = dataSnapshot.getValue(FarmModel.class);
                             if (!bundle.isEmpty()) {
                                 if (bundle.containsKey("keyword") && bundle.containsKey("areaMin") && bundle.containsKey("budgetMin")) {
@@ -243,7 +243,6 @@ public class HomeFragment extends Fragment {
                         if (dataSnapshot.child("farmerId").getValue().toString().equals(key) &&
                                 dataSnapshot.child("investorId").getValue().toString().equals(user.getUid())) {
                             mIsBooking.add(true);
-
                             break;
                         } else if (i == snapshot.getChildrenCount() - 1) {
                             mIsBooking.add(false);
@@ -253,6 +252,8 @@ public class HomeFragment extends Fragment {
                 }
                 farmAdapter = new FarmAdapter(getContext(), farmModels, listener, mIsBooking);
                 binding.rvFarmland.setAdapter(farmAdapter);
+                Log.d(TAG, "Adapter size: " + farmAdapter.getItemCount());
+                Log.d(TAG, "Book Size: " + mIsBooking.size());
             }
 
             @Override
@@ -274,7 +275,6 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 }
-                Log.d(TAG, "onDataChange: " + mBookedList.size());
                 populateRecyclerView();
             }
 
@@ -303,7 +303,6 @@ public class HomeFragment extends Fragment {
                 mBookButton = v.findViewById(R.id.btn_book);
                 if (v.getId() == mBookButton.getId()) {
                     bookFarm(farmModel);
-                    sendSmsFarmer("639297784682");
                     return;
                 }
             }
@@ -317,17 +316,17 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     if (farmModel.getValue().equals(dataSnapshot.getValue(FarmModel.class).getValue())) {
-                        mBook = new BookModel(user.getUid(), dataSnapshot.getKey(), getTimeStamp());
+                        mBook = new BookModel(user.getUid(), dataSnapshot.child("farmerId").getValue().toString(), getTimeStamp());
                         referenceBook.push().setValue(mBook).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 mBookButton.setEnabled(false);
                                 mBookButton.setText("Book Request Sent");
-                                referenceUser.child(dataSnapshot.getKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                referenceUser.child(dataSnapshot.child("farmerId").getValue().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         Log.d(TAG, "onDataChange: " + snapshot.child("contactNumber").getValue().toString());
-
+                                        sendSmsFarmer(snapshot.child("contactNumber").getValue().toString());
                                     }
 
                                     @Override
@@ -362,7 +361,7 @@ public class HomeFragment extends Fragment {
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                "https://sms.teamssprogram.com/api/send?key=f48388598105a1516e489c527b15a94c46252cf3&phone=" + phone + "&message=Rentaland%3Investor+"+ mInvestorUser.getLastName()+"+"+mInvestorUser.getFirstName()+"+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting.%0D%0APhone%3A+"+mInvestorUser.getContactNumber(),
+                "https://sms.teamssprogram.com/api/send?key=3c9d7f0e9cecb23c4504d3a031a228125e1d8251&phone=" + phone + "&message=Rentaland%3Investor+"+ mInvestorUser.getLastName()+"+"+mInvestorUser.getFirstName()+"+sent+you+a+booking+request+just+now%21+%0D%0AAccept+booking+request+to+start+chatting.%0D%0APhone%3A+"+mInvestorUser.getContactNumber(),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override

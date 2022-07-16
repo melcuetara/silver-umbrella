@@ -187,7 +187,7 @@
                             android:drawablePadding="5dp"
                             android:drawableTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             android:textColor="@color/darkbrown"
                             android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -212,7 +212,7 @@
                             android:drawablePadding="5dp"
                             android:drawableTint="@color/darkbrown"
                             android:fontFamily="@font/amaranth"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             android:textColor="@color/darkbrown"
                             android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -277,6 +277,22 @@
                 android:backgroundTint="@color/darkbrown"
                 android:fontFamily="@font/amaranth"
                 android:text="Create"
+                android:textSize="12sp"
+                app:cornerRadius="10dp" />
+            <Button
+                android:id="@+id/btn_delete_farmland"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/btn_create"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/darkbrown"
+                android:fontFamily="@font/amaranth"
+                android:visibility="invisible"
+                android:enabled="false"
+                android:text="Delete"
                 android:textSize="12sp"
                 app:cornerRadius="10dp" />
 

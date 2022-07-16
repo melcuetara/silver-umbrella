@@ -65,8 +65,13 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
-        bundle = getIntent().getExtras();
-        userType = bundle.getString("userType");
+        if (getIntent().getExtras() != null) {
+            bundle = getIntent().getExtras();
+            bundle.getString("userType");
+            userType = bundle.getString("userType");
+        } else {
+            userType = "user_farmer";
+        }
 
         Log.d(TAG, "onCreate: " + userType);
         binding.ivUserImage.setOnClickListener(new View.OnClickListener() {

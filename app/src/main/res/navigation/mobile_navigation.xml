@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/nav_message"
         android:name="com.example.rentaland.ui.message.MessageThreadFragment"
-        android:label="fragment_message" />
+        android:label="Message" />
 
 
 </navigation>

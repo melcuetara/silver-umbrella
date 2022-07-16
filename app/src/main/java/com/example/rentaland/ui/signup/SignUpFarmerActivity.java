@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class SignUpFarmerActivity extends AppCompatActivity {
 
@@ -46,12 +47,14 @@ public class SignUpFarmerActivity extends AppCompatActivity {
     private Uri titleImageUrl;
     private Uri imageUri;
     private FarmModel farmModel;
+    public String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpFarmlandBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        View view = binding.getRoot();
+        setContentView(view);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         mUser = mAuth.getCurrentUser();
@@ -59,6 +62,30 @@ public class SignUpFarmerActivity extends AppCompatActivity {
         reference = database.getReference().child("user_farmer").child(user.getUid());
         storage = FirebaseStorage.getInstance();
 
+        if (getIntent().getStringExtra("key") == null) {
+            key = database.getReference().push().getKey();
+        } else {
+            key = getIntent().getStringExtra("key");
+            if (getIntent().getExtras().getSerializable("farm") != null) {
+                binding.btnDeleteFarmland.setVisibility(View.VISIBLE);
+                binding.btnDeleteFarmland.setEnabled(true);
+            }
+        }
+
+        binding.btnDeleteFarmland.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteFarmland(key);
+            }
+        });
+        if (getIntent() != null) {
+            FarmModel farm = (FarmModel) getIntent().getExtras().getSerializable("farm");
+            binding.etFarmAddress.setText(farm.getFarmAddress());
+            binding.etFarmBudget.setText("" + farm.getFarmingBudget());
+            binding.etFarmName.setText(farm.getFarmName());
+            binding.etFarmArea.setText("" + farm.getFarmArea());
+
+        }
         binding.ivFarmImage.setOnClickListener(v -> openFileChooser(PICK_IMAGE_REQUEST));
         binding.ivLandTitle.setOnClickListener(v -> openFileChooser(PICK_IMAGE_REQUEST_TITLE));
 
@@ -74,6 +101,7 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                 if (imageUri == null || titleImageUrl == null) {
                     Toast.makeText(SignUpFarmerActivity.this, "Please Select Image", Toast.LENGTH_SHORT).show();
                     return;
+
                 }
                 String farmAddress = binding.etFarmAddress.getText().toString().trim();
                 String farmName = binding.etFarmName.getText().toString().trim();
@@ -86,7 +114,6 @@ public class SignUpFarmerActivity extends AppCompatActivity {
     }
 
     private void saveCredentials(FarmModel farmModel) {
-        String key = database.getReference().push().getKey();
         storageRef = storage.getReference("Farm Images").child(key).child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
         reference = database.getReference().child("farmland").child(key);
         storageRef.putFile(imageUri)
@@ -111,6 +138,11 @@ public class SignUpFarmerActivity extends AppCompatActivity {
                                                         reference.setValue(farmModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void unused) {
+                                                                if (getIntent() != null) {
+                                                                    finishActivity(1);
+                                                                    finish();
+                                                                    return;
+                                                                }
                                                                 startMainFarmer();
                                                                 finish();
                                                             }
@@ -173,5 +205,12 @@ public class SignUpFarmerActivity extends AppCompatActivity {
         }
         etLayout.setError(null);
         return false;
+    }
+
+    private void deleteFarmland(String key) {
+        database.getReference("farmland").child(key).removeValue();
+        finishActivity(1);
+        finish();
+        return;
     }
 }
