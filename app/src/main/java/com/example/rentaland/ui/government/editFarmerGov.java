@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rentaland.R;
 import com.example.rentaland.model.IdModel;
+import com.example.rentaland.model.UserModel;
+import com.example.rentaland.model.editProfileModel;
 import com.example.rentaland.model.registerGovernmentModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,8 +35,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 
-public class editProfileGov extends AppCompatActivity {
-    EditText etBarangayName,etFirstName,etLastName,etAge,etGender,etNumber;
+public class editFarmerGov extends AppCompatActivity {
+    EditText etFirstName,etAddress,etLastName,etAge,etGender,etNumber;
     Button registerBtn;
     ImageView ivImage;
     private static final int PICK_IMAGE_REQUEST_PROFILE = 1;
@@ -44,26 +47,31 @@ public class editProfileGov extends AppCompatActivity {
     private DatabaseReference reference;
     private Uri idImageUrl;
     private Uri imageUri;
+    String UID;
     private IdModel idModel;
     private StorageReference storageRef;
     private DatePickerDialog datePickerDialog;
+    Bundle bundle;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_government);
+        setContentView(R.layout.activity_edit_farmer);
+        bundle = getIntent().getExtras();
+        UID = bundle.getString("UID");
+        Log.d("UID",UID);
         storage = FirebaseStorage.getInstance();
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference();
-        etBarangayName = (EditText) findViewById(R.id.et_barangay_name_edit_gov);
-        etFirstName = (EditText) findViewById(R.id.et_first_name);
-        etLastName = (EditText) findViewById(R.id.et_last_name);
-        etAge = (EditText) findViewById(R.id.et_age);
-        etGender = (EditText) findViewById(R.id.et_gender_edit_gov);
-        registerBtn = (Button) findViewById(R.id.btn_register);
-        etNumber = (EditText) findViewById(R.id.et_contact_number_edit_gov);
-        ivImage = (ImageView) findViewById(R.id.iv_user_image_edit_gov);
+        etAddress = (EditText) findViewById(R.id.et_address_farmer);
+        etFirstName = (EditText) findViewById(R.id.et_first_name_farmer);
+        etLastName = (EditText) findViewById(R.id.et_last_name_farmer);
+        etAge = (EditText) findViewById(R.id.et_age_farmer);
+        etGender = (EditText) findViewById(R.id.et_gender_farmer);
+        registerBtn = (Button) findViewById(R.id.btn_edit_farmer);
+        etNumber = (EditText) findViewById(R.id.et_contact_number_farmer);
+        ivImage = (ImageView) findViewById(R.id.iv_user_image_farmer);
         ivImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,15 +87,7 @@ public class editProfileGov extends AppCompatActivity {
             }
 
         });
-        etAge.setText("Select Birth Date: " + getTodayDate());
-        etAge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerDialog.show();
-            }
-        });
     }
-
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -178,8 +178,8 @@ public class editProfileGov extends AppCompatActivity {
                             public void onSuccess(Uri uri) {
                                 idModel = new IdModel(user.getUid());
                                 idModel.setIdImageUrl(uri.toString());
-                                registerGovernmentModel model = new registerGovernmentModel(etBarangayName.getText().toString(), etFirstName.getText().toString(), etLastName.getText().toString(), etAge.getText().toString(), etGender.getText().toString(), etNumber.getText().toString(),idModel.getIdImageUrl());
-                                FirebaseDatabase.getInstance().getReference().child("user_government").child(user.getUid()).setValue(model);
+                                editProfileModel model = new editProfileModel(etFirstName.getText().toString(),etLastName.getText().toString(),idModel.getIdImageUrl(),etAge.getText().toString(),etGender.getText().toString(),etNumber.getText().toString(),etAddress.getText().toString());
+                                FirebaseDatabase.getInstance().getReference().child("user_farmer").child(UID).setValue(model);
                             }
                         });
                     }
@@ -192,10 +192,7 @@ public class editProfileGov extends AppCompatActivity {
     }
     public Boolean checker() {
         Boolean check;
-        if (etBarangayName.getText().toString().isEmpty()) {
-            etBarangayName.setError("Please Enter Barangay Name");
-            return check = true;
-        } else if (etFirstName.getText().toString().isEmpty()) {
+        if (etFirstName.getText().toString().isEmpty()) {
             etFirstName.setError("Please Enter First Name");
             return check = true;
         } else if (etLastName.getText().toString().isEmpty()) {
@@ -212,7 +209,6 @@ public class editProfileGov extends AppCompatActivity {
             etAge.setError("Please Enter Age");
             return check = true;
         } else
-            etBarangayName.setError(null);
         etGender.setError(null);
         etLastName.setError(null);
         etFirstName.setError(null);
@@ -232,6 +228,4 @@ public class editProfileGov extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, requestCode);
     }
-
 }
-
