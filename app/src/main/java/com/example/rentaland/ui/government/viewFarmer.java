@@ -16,7 +16,6 @@ import com.example.rentaland.R;
 import com.example.rentaland.adapter.viewFarmerAdapter;
 import com.example.rentaland.model.viewFarmerGovModel;
 import com.example.rentaland.ui.signup.SignUpCredentialsActivity;
-import com.example.rentaland.ui.signup.UserTypeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -170,7 +169,7 @@ public class viewFarmer extends AppCompatActivity {
     }
     public void openEditFarmland(String UID)
     {
-        Intent intent = new Intent(this, editFarmlandGov.class);
+        Intent intent = new Intent(this, viewFarmlandGov.class);
         startActivity(intent);
     }
     public void openEditFarmer(String UID)

@@ -39,7 +39,7 @@
             android:name=".StartLogoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.government.editFarmlandGov"
+            android:name=".ui.government.viewFarmlandGov"
             android:exported="false" />
         <activity
             android:name=".ui.message.MessageActivity"
