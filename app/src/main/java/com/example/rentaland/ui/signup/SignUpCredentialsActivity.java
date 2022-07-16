@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
+import com.example.rentaland.MainFarmerActivity;
 import com.example.rentaland.databinding.ActivitySignUpCredentialsBinding;
 import com.example.rentaland.model.IdModel;
 import com.example.rentaland.model.UserModel;
@@ -139,7 +140,7 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         if (userType.equals("user_farmer")) {
-                                            startSignUpFarmer();
+                                            startMainFarmer();
                                             return;
                                         } else {
                                             startMain();
@@ -195,8 +196,8 @@ public class SignUpCredentialsActivity extends AppCompatActivity {
                 });
     }
 
-    private void startSignUpFarmer() {
-        Intent intentFarmer = new Intent(SignUpCredentialsActivity.this, SignUpFarmerActivity.class);
+    private void startMainFarmer() {
+        Intent intentFarmer = new Intent(SignUpCredentialsActivity.this, MainFarmerActivity.class);
         startActivity(intentFarmer);
     }
 

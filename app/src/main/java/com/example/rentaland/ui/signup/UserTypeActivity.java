@@ -47,6 +47,7 @@ public class UserTypeActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserTypeActivity.this, SignUpCredentialsActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
             }
         });
     }

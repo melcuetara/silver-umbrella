@@ -64,13 +64,13 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_address_single"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_profile_address"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_address_single"
+                    android:id="@+id/tv_profile_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -80,13 +80,13 @@
                     android:text="Address"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_contact_single"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_profile_contact"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name_single" />
 
                 <TextView
-                    android:id="@+id/tv_contact_single"
+                    android:id="@+id/tv_profile_contact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -98,10 +98,10 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_address_single" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_address" />
 
                 <TextView
-                    android:id="@+id/tv_age_single"
+                    android:id="@+id/tv_profile_age"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -113,10 +113,10 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_contact_single" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_contact" />
 
                 <TextView
-                    android:id="@+id/tv_gender_single"
+                    android:id="@+id/tv_profile_gender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -131,10 +131,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/iv_profile_by_noti"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_age_single" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_age" />
 
                 <Button
-                    android:id="@+id/brn_editProfile_single"
+                    android:id="@+id/btn_profile_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -144,7 +144,7 @@
                     android:text="Edit"
                     android:textSize="12sp"
                     app:cornerRadius="10dp"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_age_single"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_profile_age"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_profile_by_noti" />
 

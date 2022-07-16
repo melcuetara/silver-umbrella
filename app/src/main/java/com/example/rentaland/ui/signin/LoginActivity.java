@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rentaland.MainActivity;
+import com.example.rentaland.MainFarmerActivity;
 import com.example.rentaland.SmsGateway;
 import com.example.rentaland.ui.admin.adminDashboard;
 import com.example.rentaland.ui.government.governmentDashboard;
@@ -48,10 +49,10 @@ public class LoginActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference();
+        setContentView(view);
         if (currentUser != null) {
+            Toast.makeText(this, "Session Found: Logging In", Toast.LENGTH_SHORT).show();
             startMain();
-        } else {
-            setContentView(view);
         }
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,15 +102,37 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         }
+                        mReference.child("user_farmer").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                                        if (dataSnapshot.getKey().equals(mAuth.getUid())) {
+                                            Intent intentMain = new Intent(LoginActivity.this, MainFarmerActivity.class);
+                                            startActivity(intentMain);
+                                            finish();
+                                            return;
+                                        }
+                                    }
+                                }
+                                Intent intentMain = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intentMain);
+                                finish();
+                                return;
+                            }
 
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-                Intent intentMain = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intentMain);
+
             }
 
             @Override
