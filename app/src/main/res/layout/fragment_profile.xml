@@ -136,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:backgroundTint="@color/darkbrown"
+                    android:backgroundTint="@color/GREEN"
                     android:fontFamily="@font/amaranth"
                     android:text="Edit"
                     android:textSize="12sp"
@@ -149,7 +149,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_profile_farmland"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -163,7 +163,7 @@
                     android:layout_height="55dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:backgroundTint="#4CAF50"
+                    android:backgroundTint="#8190E6"
                     android:gravity="center"
                     android:text="Add Farmland"
                     android:textSize="12sp"

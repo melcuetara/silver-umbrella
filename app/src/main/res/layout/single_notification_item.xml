@@ -41,7 +41,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_baseline_person_24" />
+                    android:src="@drawable/ic_baseline_person_24"
+                    tools:srcCompat="@drawable/godfather" />
 
             </androidx.cardview.widget.CardView>
 
@@ -54,7 +55,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
-            android:text="Name"
+            android:text="Don Corleone"
             android:textColor="@color/darkbrown"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -71,7 +72,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
             android:paddingLeft="5dp"
-            android:text="Address"
+            android:text="Talamban Cebu City"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_contact_manage"
@@ -87,7 +88,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
             android:paddingLeft="5dp"
-            android:text="Date"
+            android:text="07-15-2021"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/btn_delete_manage"
@@ -104,7 +105,7 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/amaranth"
             android:paddingLeft="5dp"
-            android:text="Contact No."
+            android:text="09256965965"
             android:textColor="@color/darkbrown"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_user_type_manage"
@@ -120,7 +121,7 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/GREEN"
             android:fontFamily="@font/amaranth"
-            android:text="Accept"
+            android:text="View Profile"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:cornerRadius="10dp"
@@ -137,7 +138,7 @@
             android:layout_marginTop="10dp"
             android:backgroundTint="#DC5D5D"
             android:fontFamily="@font/amaranth"
-            android:text="decline"
+            android:text="unbook"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:cornerRadius="10dp"
